@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>E-permutation | Nouvelle Demande</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="../../../plugins/fontawesome-free/css/all.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../../dist/css/adminlte.min.css" />
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+     <!-- Navbar -->
+     <nav class="main-header navbar navbar-expand navbar-orange navbar-dark">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"
+            ><i class="fas fa-bars"></i
+          ></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="./dash-dmdeur.php" class="nav-link">Tableau de Bord</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="./liste-dmd.php" class="nav-link">Demandes</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="./statut-dmd.php" class="nav-link">Suivi du Statut</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="./dmd-approuvée.php" class="nav-link">Approbation</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="./nlle_demande.php" class="nav-link" style="font-weight: bold;">Nlle Demande</a>
+        </li>
+      </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Navbar Search -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            data-widget="navbar-search"
+            href="#"
+            role="button"
+          >
+            <i class="fas fa-search"></i>
+          </a>
+          <div class="navbar-search-block">
+            <form class="form-inline">
+              <div class="input-group input-group-sm">
+                <input
+                  class="form-control form-control-navbar"
+                  type="search"
+                  placeholder="Rechercher"
+                  aria-label="Search"
+                />
+                <div class="input-group-append">
+                  <button class="btn btn-navbar" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                  <button
+                    class="btn btn-navbar"
+                    type="button"
+                    data-widget="navbar-search"
+                  >
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item dropdown"></li>
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-bell"></i>
+            <span class="badge badge-warning navbar-badge">6</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-header">15 Notifications</span>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-envelope mr-2"></i> 4 nouveaux messages
+              <span class="float-right text-muted text-sm">3 mins</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-users mr-2"></i> 2 demandes intéressantes
+              <span class="float-right text-muted text-sm">12 heures</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer"
+              >Voir Toutes les Notifications</a
+            >
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+      
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-light-orange elevation-4">
+        <!-- Brand Logo -->
+        <a href="../../../index.php" class="brand-link">
+          <img
+            src="../../../dist/img/uvci-img/logo-circle.jpg"
+            alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3"
+            style="opacity: 0.8"
+          />
+          <span class="brand-text font-weight-light">E-Permutation</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img
+              src="../../../dist/img/uvci-img/intituteur.jpg"
+                class="img-circle elevation-2"
+                alt="User Image"
+              />
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">Kouakou Alexandre</a>
+            </div>
+          </div>
+
+          <!-- SidebarSearch Form -->
+          <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+              <input
+                class="form-control form-control-sidebar"
+                type="search"
+                placeholder="Rechercher"
+                aria-label="Search"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-sidebar">
+                  <i class="fas fa-search fa-fw"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+            >
+              <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <li class="nav-item">
+                <a href="./dash-dmdeur.php" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt" style="color: green;"></i>
+                  <p style="color: green;">Accueil</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="./liste-dmd.php" class="nav-link">
+                  <i class="nav-icon fas fa-table" style="color: green;"></i>
+                  <p style="color: green;">Liste des demandes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./statut-dmd.php" class="nav-link">
+                  <i class="nav-icon fas fa-th" style="color: green;"></i>
+                  <p style="color: green;">Statut des demandes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./dmd-approuvée.php" class="nav-link" style="color: green;">
+                  <i class="nav-icon fas fa-copy" ></i>
+                  <p>Demandes approuvées</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./nlle_demande.php" class="nav-link active" >
+                  <i class="nav-icon fas fa-tasks" style="color: white;"></i>
+                  <p style="color: white;">Enregistrer une demande</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./maj-mdp.php" class="nav-link" style="color: green;">
+                  <i class="nav-icon fas fa-user-cog"></i>
+                  <p>Paramètres du compte</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../connexion.php" class="nav-link" style="color: green;">
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
+                  <p>Deconnexion</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0">Soumettre une nouvelle demande</h1>
+              </div>
+              <!-- /.col -->
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#" style="color: orange;">Accueil</a></li>
+                  <li class="breadcrumb-item active">Nouvelle Demande</li>
+                </ol>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <!-- SELECT2 EXAMPLE -->
+            <div class="card card-default">
+              <div class="card-header">
+                <h3 class="card-title">Informations Personnelles</h3>
+
+                <div class="card-tools">
+                  <button
+                    type="button"
+                    class="btn btn-tool"
+                    data-card-widget="collapse"
+                  >
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Nom</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          placeholder="Nom"
+                        />
+                      </div>
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-6">
+                    <!-- Date -->
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Prénoms</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          placeholder="Prénoms"
+                        />
+                      </div>
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <!-- .Debut Ligne -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Nom de Jeune Fille</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        placeholder="Nom de Jeune Fille"
+                      />
+                    </div>
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <label>Sexe</label>
+                      <select class="form-control select2" style="width: 100%">
+                        <option selected="selected">Sexe</option>
+                        <option>Feminin</option>
+                        <option>Masculin</option>
+                      </select>
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-6">
+                    <!-- Date -->
+                    <div class="form-group">
+                      <label>Date de Naissance</label>
+                      <div
+                        class="input-group date"
+                        id="reservationdate"
+                        data-target-input="nearest"
+                      >
+                        <input
+                          type="text"
+                          class="form-control datetimepicker-input"
+                          data-target="#reservationdate"
+                        />
+                        <div
+                          class="input-group-append"
+                          data-target="#reservationdate"
+                          data-toggle="datetimepicker"
+                        >
+                          <div class="input-group-text">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Date and time -->
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <label>Situation Matrimoniale</label>
+                      <select class="form-control select2" style="width: 100%">
+                        <option selected="selected">Marié(e)</option>
+                        <option>Célibataire</option>
+                        <option>Concubinage</option>
+                        <option>Veuf(ve)</option>
+                      </select>
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.Fin ligne -->
+
+                <!-- .Debut Ligne -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Contacts</label>
+
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><i class="fas fa-phone"></i
+                          ></span>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          data-inputmask="'mask': ['99-99-99-99-99']"
+                          data-mask
+                        />
+                      </div>
+                      <!-- /.input group -->
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-6">
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          placeholder="Email"
+                        />
+                      </div>
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.Fin ligne -->
+              </div>
+            </div>
+            <!-- /.card -->
+
+            <!-- SELECT2 EXAMPLE -->
+            <div class="card card-default">
+              <div class="card-header">
+                <h3 class="card-title">Informations Professionnelles</h3>
+
+                <div class="card-tools">
+                  <button
+                    type="button"
+                    class="btn btn-tool"
+                    data-card-widget="collapse"
+                  >
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Matricule</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        placeholder="Matricule"
+                      />
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-6">
+                    <!-- Date -->
+                    <div class="form-group">
+                      <label>Date de Première Prise de Service</label>
+                      <div
+                        class="input-group date"
+                        id="reservationdate"
+                        data-target-input="nearest"
+                      >
+                        <input
+                          type="text"
+                          class="form-control datetimepicker-input"
+                          data-target="#reservationdate"
+                        />
+                        <div
+                          class="input-group-append"
+                          data-target="#reservationdate"
+                          data-toggle="datetimepicker"
+                        >
+                          <div class="input-group-text">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Date and time -->
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <!-- /.Fin ligne -->
+
+                <!-- .Debut Ligne -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Emploi</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          placeholder="Emploi"
+                        />
+                      </div>
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-6">
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Fonction</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          placeholder="Fonction"
+                        />
+                      </div>
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.Fin ligne -->
+
+                <!-- .Debut Ligne -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Direction Régionale</label>
+                      <select class="form-control select2" style="width: 100%">
+                        <option selected="selected">DREN</option>
+                        <option>DRENA YAMOUSSOUKRO</option>
+                        <option>DRENA TOUBA</option>
+                        <option>DRENA SOUBRE</option>
+                        <option>DRENA SEGUELA</option>
+                        <option>DRENA SASSANDRA</option>
+                        <option>DRENA SAN-PEDRO</option>
+                        <option>DRENA ODIENNE</option>
+                        <option>DRENA MINIGNAN</option>
+                        <option>DRENA MANKONO</option>
+                        <option>DRENA MAN</option>
+                        <option>DRENA KORHOGO</option>
+                        <option>DRENA KATIOLA</option>
+                        <option>DRENA GUIGLO</option>
+                        <option>DRENA GAGNOA</option>
+                        <option>DRENA FERKESSEDOUGOU</option>
+                        <option>DRENA DUEKOUE</option>
+                        <option>DRENA DIVO</option>
+                        <option>DRENA DIMBOKRO</option>
+                        <option>DRENA DAOUKRO</option>
+                        <option>DRENA DALOA</option>
+                        <option>DRENA DABOU</option>
+                        <option>DRENA BOUNDIALI</option>
+                        <option>DRENA BOUNA</option>
+                        <option>DRENA BOUAKE 2</option>
+                        <option>DRENA BOUAKE 1</option>
+                        <option>DRENA BOUAFLE</option>
+                        <option>DRENA BONGOUANOU</option>
+                        <option>DRENA BONDOUKOU</option>
+                        <option>DRENA AGBOVILLE</option>
+                        <option>DRENA ADZOPE</option>
+                        <option>DRENA ABOISSO</option>
+                        <option>DRENA ABIDJAN 4</option>
+                        <option>DRENA ABIDJAN 3</option>
+                        <option>DRENA ABIDJAN 2</option>
+                        <option>DRENA ABIDJAN 1</option>
+                        <option>DRENA ABENGOUROU</option>
+                        <option>DDENA TIASSALE</option>
+                        <option>DDENA SINFRA</option>
+                        <option>DDENA ISSIA</option>
+                        <option>DDENA GRAND-BASSAM</option>
+                        <option>DDENA DANANE</option>
+                      </select>
+                    </div>
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1"
+                          >Etablissement ou Service</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          placeholder="Etablissement ou Service"
+                        />
+                      </div>
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Inspection d'Enseignement</label>
+                      <select class="form-control select2" style="width: 100%">
+                        <option selected="selected">IEP</option>
+                        <option>IEPP BIN-HOUYE</option>
+                        <option>IEPP DANANE</option>
+                        <option>IEPP KOUAN-HOULE</option>
+                        <option>IEPP MAHAPLEU</option>
+                        <option>IEPP TEAPLEU</option>
+                        <option>IEPP ZOUAN-HOUANIEN</option>
+                        <option>IEPP BONOUA</option>
+                        <option>IEPP GRAND-BASSAM</option>
+                        <option>IEPP IBOGUHE</option>
+                        <option>IEPP ISSIA 1</option>
+                        <option>IEPP ISSIA 2</option>
+                        <option>IEPP NAHIO</option>
+                        <option>IEPP SAIOUA</option>
+                        <option>IEPP KONONFLA</option>
+                        <option>IEPP KOUETINFLA</option>
+                        <option>IEPP SINFRA</option>
+                        <option>IEPP N'DOUCI</option>
+                        <option>IEPP SIKENSI</option>
+                        <option>IEPP TAABO</option>
+                        <option>IEPP TIASSALE 1</option>
+                        <option>IEPP TIASSALE 2</option>
+                        <option>IEPP ABENGOUROU CENTRE</option>
+                        <option>IEPP ABENGOUROU INDENIE</option>
+                        <option>IEPP AGNIBILEKROU</option>
+                        <option>IEPP AMELEKIA</option>
+                        <option>IEPP BETTIE</option>
+                        <option>IEPP NIABLE</option>
+                        <option>IEPP TANGUELAN</option>
+                        <option>IEPP YAKASSE FEYASSE</option>
+                        <option>IEPP ZARANOU</option>
+                        <option>IEPP ADJAME 220 LOGEMENTS</option>
+                        <option>IEPP ADJAME MUNICAPLITE</option>
+                        <option>IEPP BINGERVILLE</option>
+                        <option>IEPP COCODY AKOUEDO</option>
+                        <option>IEPP COCODY ATTOBAN</option>
+                        <option>IEPP COCODY BLOCHAUSSE</option>
+                        <option>IEPP COCODY-DEUX PLATEAUX</option>
+                        <option>IEPP PLATEAU</option>
+                        <option>IEPP BIETRY</option>
+                        <option>IEPP KOUMASSI PRODOMO</option>
+                        <option>IEPP KOUMASSI REMBLAIS</option>
+                        <option>IEPP KOUMASSI SICOGI</option>
+                        <option>IEPP MARCORY</option>
+                        <option>IEPP PORT-BOUET</option>
+                        <option>IEPP TREICHVILLE</option>
+                        <option>IEPP VRIDI</option>
+                        <option>IEPP ATTECOUBE</option>
+                        <option>IEPP SONGON</option>
+                        <option>IEPP YOPOUGON ANANERAIE</option>
+                        <option>IEPP YOPOUGON ANDOKOI</option>
+                      </select>
+                    </div>
+                    <!-- /.form-group -->
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1"
+                          >Discipline Enseignée</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          placeholder="Discipline Enseignée"
+                        />
+                      </div>
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.Fin ligne -->
+              </div>
+            </div>
+            <!-- /.card -->
+
+            <!-- SELECT2 EXAMPLE -->
+            <div class="card card-default">
+              <div class="card-header">
+                <h3 class="card-title">Informations de Connexion</h3>
+
+                <div class="card-tools">
+                  <button
+                    type="button"
+                    class="btn btn-tool"
+                    data-card-widget="collapse"
+                  >
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <!-- .Debut Ligne -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Login</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        placeholder="Matricule"
+                      />
+                    </div>
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <label>Type d'Inscription</label>
+                      <select class="form-control select2" style="width: 100%">
+                        <option selected="selected">Type de l'Agent</option>
+                        <option>Agent Demandeur</option>
+                        <option>Agent Intéressé</option>
+                      </select>
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-6">
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Mot de Passe</label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          placeholder="Mot de Passe"
+                        />
+                      </div>
+                    </div>
+                    <!-- /.form-group -->
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1"
+                          >Repeter le Mot de Passe</label
+                        >
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          placeholder="Mot de Passe"
+                        />
+                      </div>
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.Fin ligne -->
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-0"></div>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-6">
+                    <div class="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        name="terms"
+                        class="custom-control-input"
+                        id="exampleCheck1"
+                      />
+                      <label class="custom-control-label" for="exampleCheck1"
+                        >J'accepte les
+                        <a href="#" style="color: orange;">conditions d'utilisation</a>.</label
+                      >
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.Fin ligne -->
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col-md-6"></div>
+                </div>
+                <button type="submit" class="btn bg-orange"><span style="color: white;">Soumettre</span></button>
+              </div>
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+          <h5>Title</h5>
+          <p>Sidebar content</p>
+        </div>
+      </aside>
+      <!-- /.control-sidebar -->
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <!-- To the right -->
+        <strong
+          >Copyright &copy; 2021 -
+          <a href="#" style="color: green"
+            >DAS GROUPE G004 - UVCI</a
+          >.</strong
+        >
+        Tous droits réservés.
+      </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- REQUIRED SCRIPTS -->
+
+     <!-- jQuery -->
+     <script src="../../../plugins/jquery/jquery.min.js"></script>
+     <!-- Bootstrap 4 -->
+     <script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+     <!-- AdminLTE App -->
+     <script src="../../../dist/js/adminlte.min.js"></script>
+   </body>
+  </body>
+</html>

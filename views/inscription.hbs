@@ -1,0 +1,751 @@
+  <!-- views/inscription.hbs -->
+  
+  <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+              <div class="container-fluid">
+                <div class="row mb-2">
+                  <div class="col-sm-6">
+                    <h1>Formulaire de Permutation</h1>
+                  </div>
+                  <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                      <li class="breadcrumb-item">
+                        <a href="../../index.php" style="color: orange"
+                          >Accueil</a
+                        >
+                      </li>
+                      <li class="breadcrumb-item active">Inscription</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+              <form class="container-fluid" method="post" action="/inscription">
+                <!-- SELECT2 EXAMPLE -->
+                <div class="card card-default">
+                  <div class="card-header">
+                    <h3 class="card-title">Informations Personnelles</h3>
+
+                    <div class="card-tools">
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-card-widget="collapse"
+                      >
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Nom</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="exampleInputEmail1"
+                              placeholder="Nom"
+                              class="form-control"
+                              name="nom_Agt"
+                            />
+                          </div>
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-6">
+                        <!-- Date -->
+                        <div class="form-group">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Prénoms</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="exampleInputEmail1"
+                              placeholder="Prénoms"
+                              name="prenoms_Agt"
+                            />
+                          </div>
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- .Debut Ligne -->
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1"
+                            >Nom de Jeune Fille</label
+                          >
+                          <input
+                            type="text"
+                            name="Nom_Jeune_Fille_Agt"
+                            class="form-control"
+                            id="exampleInputEmail1"
+                            placeholder="Nom de Jeune Fille"
+                          />
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                          <label>Sexe</label>
+                          <select
+                            class="form-control select2"
+                            style="width: 100%"
+                            name="sex_Agt"
+                          >
+                            <option selected="selected">Sexe</option>
+                            <option>Feminin</option>
+                            <option>Masculin</option>
+                          </select>
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-6">
+                        <!-- Date -->
+                        <div class="form-group">
+                          <label>Date de Naissance</label>
+                          <div
+                            class="input-group date"
+                            id="reservationdate"
+                            data-target-input="nearest"
+                          >
+                            <input
+                              type="date"
+                              name="Date_Naiss_agt"
+                              class="form-control datetimepicker-input"
+                              data-target="#reservationdate"
+                            />
+                            <div
+                              class="input-group-append"
+                              data-target="#reservationdate"
+                              data-toggle="datetimepicker"
+                            >
+                              <div class="input-group-text">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Date and time -->
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                          <label>Situation Matrimoniale</label>
+                          <select
+                            class="form-control select2"
+                            style="width: 100%"
+                            name="sit_Matrimonial_Agt"
+                          >
+                            <option selected="selected">Marié(e)</option>
+                            <option>Célibataire</option>
+                            <option>Concubinage</option>
+                            <option>Veuf(ve)</option>
+                          </select>
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.Fin ligne -->
+
+                    <!-- .Debut Ligne -->
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Contacts</label>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"
+                                ><i class="fas fa-phone"></i
+                              ></span>
+                            </div>
+                            <input
+                              type="text"
+                              name="Contact_Agt"
+                              class="form-control"
+                              data-inputmask="'mask': ['99-99-99-99-99']"
+                              data-mask
+                            />
+                          </div>
+                          <!-- /.input group -->
+                        </div>
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-6">
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input
+                              type="email"
+                              name="Email_Agt"
+                              class="form-control"
+                              id="exampleInputEmail1"
+                              placeholder="Email"
+                            />
+                          </div>
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.Fin ligne -->
+                  </div>
+                </div>
+                <!-- /.card -->
+
+                <!-- SELECT2 EXAMPLE -->
+                <div class="card card-default">
+                  <div class="card-header">
+                    <h3 class="card-title">Informations Professionnelles</h3>
+
+                    <div class="card-tools">
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-card-widget="collapse"
+                      >
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Matricule</label>
+                          <input
+                            type="text"
+                            name="Matricule_agt"
+                            class="form-control"
+                            id="exampleInputEmail1"
+                            placeholder="Matricule"
+                          />
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-6">
+                        <!-- Date -->
+                        <div class="form-group">
+                          <label>Date de Première Prise de Service</label>
+                          <div
+                            class="input-group date"
+                            id="reservationdate"
+                            data-target-input="nearest"
+                          >
+                            <input
+                              type="date"
+                              name="Date_Premier_Prise_Serv_Agt"
+                              class="form-control datetimepicker-input"
+                              data-target="#reservationdate"
+                            />
+                            <div
+                              class="input-group-append"
+                              data-target="#reservationdate"
+                              data-toggle="datetimepicker"
+                            >
+                              <div class="input-group-text">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Date and time -->
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- /.Fin ligne -->
+
+                    <!-- .Debut Ligne -->
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Emploi</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="exampleInputEmail1"
+                              placeholder="Emploi"
+                              name="Emploi_Agt"
+                            />
+                          </div>
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-6">
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Fonction</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="exampleInputEmail1"
+                              placeholder="Fonction"
+                              name="Fonction_Agt"
+                            />
+                          </div>
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.Fin ligne -->
+
+                    <!-- .Debut Ligne -->
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Direction Régionale</label>
+                          <select
+                            class="form-control select2"
+                            style="width: 100%"
+                            name="Dir_Reg_Agt"
+                          >
+                            <option selected="selected">DREN</option>
+                            <option>DRENA YAMOUSSOUKRO</option>
+                            <option>DRENA TOUBA</option>
+                            <option>DRENA SOUBRE</option>
+                            <option>DRENA SEGUELA</option>
+                            <option>DRENA SASSANDRA</option>
+                            <option>DRENA SAN-PEDRO</option>
+                            <option>DRENA ODIENNE</option>
+                            <option>DRENA MINIGNAN</option>
+                            <option>DRENA MANKONO</option>
+                            <option>DRENA MAN</option>
+                            <option>DRENA KORHOGO</option>
+                            <option>DRENA KATIOLA</option>
+                            <option>DRENA GUIGLO</option>
+                            <option>DRENA GAGNOA</option>
+                            <option>DRENA FERKESSEDOUGOU</option>
+                            <option>DRENA DUEKOUE</option>
+                            <option>DRENA DIVO</option>
+                            <option>DRENA DIMBOKRO</option>
+                            <option>DRENA DAOUKRO</option>
+                            <option>DRENA DALOA</option>
+                            <option>DRENA DABOU</option>
+                            <option>DRENA BOUNDIALI</option>
+                            <option>DRENA BOUNA</option>
+                            <option>DRENA BOUAKE 2</option>
+                            <option>DRENA BOUAKE 1</option>
+                            <option>DRENA BOUAFLE</option>
+                            <option>DRENA BONGOUANOU</option>
+                            <option>DRENA BONDOUKOU</option>
+                            <option>DRENA AGBOVILLE</option>
+                            <option>DRENA ADZOPE</option>
+                            <option>DRENA ABOISSO</option>
+                            <option>DRENA ABIDJAN 4</option>
+                            <option>DRENA ABIDJAN 3</option>
+                            <option>DRENA ABIDJAN 2</option>
+                            <option>DRENA ABIDJAN 1</option>
+                            <option>DRENA ABENGOUROU</option>
+                            <option>DDENA TIASSALE</option>
+                            <option>DDENA SINFRA</option>
+                            <option>DDENA ISSIA</option>
+                            <option>DDENA GRAND-BASSAM</option>
+                            <option>DDENA DANANE</option>
+                          </select>
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1"
+                              >Etablissement ou Service</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="Etabl_Serv_Agt"
+                              id="exampleInputEmail1"
+                              placeholder="Etablissement ou Service"
+                            />
+                          </div>
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Inspection d'Enseignement</label>
+                          <select
+                            class="form-control select2"
+                            style="width: 100%"
+                            name="IEP_Agt"
+                          >
+                            <option selected="selected">IEP</option>
+                            <option>IEPP BIN-HOUYE</option>
+                            <option>IEPP DANANE</option>
+                            <option>IEPP KOUAN-HOULE</option>
+                            <option>IEPP MAHAPLEU</option>
+                            <option>IEPP TEAPLEU</option>
+                            <option>IEPP ZOUAN-HOUANIEN</option>
+                            <option>IEPP BONOUA</option>
+                            <option>IEPP GRAND-BASSAM</option>
+                            <option>IEPP IBOGUHE</option>
+                            <option>IEPP ISSIA 1</option>
+                            <option>IEPP ISSIA 2</option>
+                            <option>IEPP NAHIO</option>
+                            <option>IEPP SAIOUA</option>
+                            <option>IEPP KONONFLA</option>
+                            <option>IEPP KOUETINFLA</option>
+                            <option>IEPP SINFRA</option>
+                            <option>IEPP N'DOUCI</option>
+                            <option>IEPP SIKENSI</option>
+                            <option>IEPP TAABO</option>
+                            <option>IEPP TIASSALE 1</option>
+                            <option>IEPP TIASSALE 2</option>
+                            <option>IEPP ABENGOUROU CENTRE</option>
+                            <option>IEPP ABENGOUROU INDENIE</option>
+                            <option>IEPP AGNIBILEKROU</option>
+                            <option>IEPP AMELEKIA</option>
+                            <option>IEPP BETTIE</option>
+                            <option>IEPP NIABLE</option>
+                            <option>IEPP TANGUELAN</option>
+                            <option>IEPP YAKASSE FEYASSE</option>
+                            <option>IEPP ZARANOU</option>
+                            <option>IEPP ADJAME 220 LOGEMENTS</option>
+                            <option>IEPP ADJAME MUNICAPLITE</option>
+                            <option>IEPP BINGERVILLE</option>
+                            <option>IEPP COCODY AKOUEDO</option>
+                            <option>IEPP COCODY ATTOBAN</option>
+                            <option>IEPP COCODY BLOCHAUSSE</option>
+                            <option>IEPP COCODY-DEUX PLATEAUX</option>
+                            <option>IEPP PLATEAU</option>
+                            <option>IEPP BIETRY</option>
+                            <option>IEPP KOUMASSI PRODOMO</option>
+                            <option>IEPP KOUMASSI REMBLAIS</option>
+                            <option>IEPP KOUMASSI SICOGI</option>
+                            <option>IEPP MARCORY</option>
+                            <option>IEPP PORT-BOUET</option>
+                            <option>IEPP TREICHVILLE</option>
+                            <option>IEPP VRIDI</option>
+                            <option>IEPP ATTECOUBE</option>
+                            <option>IEPP SONGON</option>
+                            <option>IEPP YOPOUGON ANANERAIE</option>
+                            <option>IEPP YOPOUGON ANDOKOI</option>
+                          </select>
+                        </div>
+                        <!-- /.form-group -->
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1"
+                              >Discipline Enseignée</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="Discipline_Agt"
+                              id="exampleInputEmail1"
+                              placeholder="Discipline Enseignée"
+                            />
+                          </div>
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.Fin ligne -->
+                  </div>
+                </div>
+                <!-- /.card -->
+
+                <!-- SELECT2 EXAMPLE -->
+                <div class="card card-default">
+                  <div class="card-header">
+                    <h3 class="card-title">Informations de Permutation</h3>
+
+                    <div class="card-tools">
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-card-widget="collapse"
+                      >
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <!-- .Debut Ligne -->
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Direction Régionale de Destination</label>
+                          <select
+                            class="form-control select2"
+                            style="width: 100%"
+                            name="Dren_Destination_Dmde"
+                          >
+                            <option selected="selected">DREN</option>
+                            <option>DRENA YAMOUSSOUKRO</option>
+                            <option>DRENA TOUBA</option>
+                            <option>DRENA SOUBRE</option>
+                            <option>DRENA SEGUELA</option>
+                            <option>DRENA SASSANDRA</option>
+                            <option>DRENA SAN-PEDRO</option>
+                            <option>DRENA ODIENNE</option>
+                            <option>DRENA MINIGNAN</option>
+                            <option>DRENA MANKONO</option>
+                            <option>DRENA MAN</option>
+                            <option>DRENA KORHOGO</option>
+                            <option>DRENA KATIOLA</option>
+                            <option>DRENA GUIGLO</option>
+                            <option>DRENA GAGNOA</option>
+                            <option>DRENA FERKESSEDOUGOU</option>
+                            <option>DRENA DUEKOUE</option>
+                            <option>DRENA DIVO</option>
+                            <option>DRENA DIMBOKRO</option>
+                            <option>DRENA DAOUKRO</option>
+                            <option>DRENA DALOA</option>
+                            <option>DRENA DABOU</option>
+                            <option>DRENA BOUNDIALI</option>
+                            <option>DRENA BOUNA</option>
+                            <option>DRENA BOUAKE 2</option>
+                            <option>DRENA BOUAKE 1</option>
+                            <option>DRENA BOUAFLE</option>
+                            <option>DRENA BONGOUANOU</option>
+                            <option>DRENA BONDOUKOU</option>
+                            <option>DRENA AGBOVILLE</option>
+                            <option>DRENA ADZOPE</option>
+                            <option>DRENA ABOISSO</option>
+                            <option>DRENA ABIDJAN 4</option>
+                            <option>DRENA ABIDJAN 3</option>
+                            <option>DRENA ABIDJAN 2</option>
+                            <option>DRENA ABIDJAN 1</option>
+                            <option>DRENA ABENGOUROU</option>
+                            <option>DDENA TIASSALE</option>
+                            <option>DDENA SINFRA</option>
+                            <option>DDENA ISSIA</option>
+                            <option>DDENA GRAND-BASSAM</option>
+                            <option>DDENA DANANE</option>
+                          </select>
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label
+                            >Inspection d'Enseignement de Destination</label
+                          >
+                          <select
+                            class="form-control select2"
+                            style="width: 100%"
+                            name="Insp_Destination_Dmde"
+                          >
+                            <option selected="selected">IEP</option>
+                            <option>IEPP BIN-HOUYE</option>
+                            <option>IEPP DANANE</option>
+                            <option>IEPP KOUAN-HOULE</option>
+                            <option>IEPP MAHAPLEU</option>
+                            <option>IEPP TEAPLEU</option>
+                            <option>IEPP ZOUAN-HOUANIEN</option>
+                            <option>IEPP BONOUA</option>
+                            <option>IEPP GRAND-BASSAM</option>
+                            <option>IEPP IBOGUHE</option>
+                            <option>IEPP ISSIA 1</option>
+                            <option>IEPP ISSIA 2</option>
+                            <option>IEPP NAHIO</option>
+                            <option>IEPP SAIOUA</option>
+                            <option>IEPP KONONFLA</option>
+                            <option>IEPP KOUETINFLA</option>
+                            <option>IEPP SINFRA</option>
+                            <option>IEPP N'DOUCI</option>
+                            <option>IEPP SIKENSI</option>
+                            <option>IEPP TAABO</option>
+                            <option>IEPP TIASSALE 1</option>
+                            <option>IEPP TIASSALE 2</option>
+                            <option>IEPP ABENGOUROU CENTRE</option>
+                            <option>IEPP ABENGOUROU INDENIE</option>
+                            <option>IEPP AGNIBILEKROU</option>
+                            <option>IEPP AMELEKIA</option>
+                            <option>IEPP BETTIE</option>
+                            <option>IEPP NIABLE</option>
+                            <option>IEPP TANGUELAN</option>
+                            <option>IEPP YAKASSE FEYASSE</option>
+                            <option>IEPP ZARANOU</option>
+                            <option>IEPP ADJAME 220 LOGEMENTS</option>
+                            <option>IEPP ADJAME MUNICAPLITE</option>
+                            <option>IEPP BINGERVILLE</option>
+                            <option>IEPP COCODY AKOUEDO</option>
+                            <option>IEPP COCODY ATTOBAN</option>
+                            <option>IEPP COCODY BLOCHAUSSE</option>
+                            <option>IEPP COCODY-DEUX PLATEAUX</option>
+                            <option>IEPP PLATEAU</option>
+                            <option>IEPP BIETRY</option>
+                            <option>IEPP KOUMASSI PRODOMO</option>
+                            <option>IEPP KOUMASSI REMBLAIS</option>
+                            <option>IEPP KOUMASSI SICOGI</option>
+                            <option>IEPP MARCORY</option>
+                            <option>IEPP PORT-BOUET</option>
+                            <option>IEPP TREICHVILLE</option>
+                            <option>IEPP VRIDI</option>
+                            <option>IEPP ATTECOUBE</option>
+                            <option>IEPP SONGON</option>
+                            <option>IEPP YOPOUGON ANANERAIE</option>
+                            <option>IEPP YOPOUGON ANDOKOI</option>
+                          </select>
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.Fin ligne -->
+                  </div>
+                </div>
+                <!-- /.card -->
+
+                <!-- SELECT2 EXAMPLE -->
+                <div class="card card-default">
+                  <div class="card-header">
+                    <h3 class="card-title">Informations de Connexion</h3>
+
+                    <div class="card-tools">
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-card-widget="collapse"
+                      >
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <!-- .Debut Ligne -->
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Login</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="Login_Agt"
+                            id="exampleInputEmail1"
+                            placeholder="Matricule"
+                          />
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                          <label>Type d'Inscription</label>
+                          <select
+                            class="form-control select2"
+                            style="width: 100%"
+                            name="Design_Cat_Dmde"
+                          >
+                            <option selected="selected">Type de l'Agent</option>
+                            <option>Agent Demandeur</option>
+                            <option>Agent Intéressé</option>
+                          </select>
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-6">
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Mot de Passe</label>
+                            <input
+                              type="password"
+                              name="Pass_Agt"
+                              class="form-control"
+                              id="exampleInputEmail1"
+                              placeholder="Mot de Passe"
+                            />
+                          </div>
+                        </div>
+                        <!-- /.form-group -->
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1"
+                              >Repeter le Mot de Passe</label
+                            >
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="exampleInputEmail1"
+                              placeholder="Mot de Passe"
+                            />
+                          </div>
+                        </div>
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.Fin ligne -->
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group mb-0"></div>
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-6">
+                        <div class="custom-control custom-checkbox">
+                          <input
+                            type="checkbox"
+                            name="terms"
+                            class="custom-control-input"
+                            id="exampleCheck1"
+                          />
+                          <label
+                            class="custom-control-label"
+                            for="exampleCheck1"
+                            >J'accepte les
+                            <a href="#" style="color: orange"
+                              >conditions d'utilisation</a
+                            >.</label
+                          >
+                        </div>
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.Fin ligne -->
+                  </div>
+                  <!-- /.card-body -->
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col-md-6"></div>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end">
+                      <button type="submit" class="btn bg-orange">
+                        <span style="color: white">Soumettre</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card -->
+              </form>
+              <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+      </div>

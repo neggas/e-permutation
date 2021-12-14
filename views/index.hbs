@@ -1,0 +1,161 @@
+ <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0">E-Permutation</h1>
+              </div>
+              <!-- /.col -->
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item">
+                    <a href="#" style="color: orange">Accueil</a>
+                  </li>
+                  <li class="breadcrumb-item active">Liste des demandes</li>
+                </ol>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+          <div class="container">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+              <div class="container-fluid">
+                <div style="display: flex; justify-content: center">
+                  <img src="dist/img/uvci-img/logo.png" />
+                </div>
+
+                <h2 class="text-center display-4" style="color: orange">
+                  ESPACE PERMUTATION
+                </h2>
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+              <div class="container-fluid">
+                <form action="#">
+                  <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label>Type de Resultat</label>
+                            <select
+                              class="select2"
+                              multiple="multiple"
+                              data-placeholder="Tout"
+                              style="width: 100%"
+                            >
+                              <option>Actif</option>
+                              <option>Inactif</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-3">
+                          <div class="form-group">
+                            <label>Ordre de tri:</label>
+                            <select class="select2" style="width: 100%">
+                              <option selected>Croissant</option>
+                              <option>Décroissant</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-3">
+                          <div class="form-group">
+                            <label>Trier par:</label>
+                            <select class="select2" style="width: 100%">
+                              <option selected>Titre</option>
+                              <option>Date</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group input-group-lg">
+                          <input
+                            type="search"
+                            class="form-control form-control-lg"
+                            placeholder="Rechercher"
+                          />
+                          <div class="input-group-append">
+                            <button
+                              type="submit"
+                              class="btn btn-lg btn-default"
+                            >
+                              <i class="fa fa-search"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="row mt-3">
+                  <div class="col-md-10 offset-md-1">
+                    <div class="list-group">
+                        {{#each demandes }}
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col-auto">
+                                  <img
+                                    class="img-fluid"
+                                    src="./dist/img/uvci-img/permutation.jpg"
+                                    alt="Photo"
+                                    style="max-height: 160px"
+                                  />
+                                </div>
+                                <div class="col px-4">
+                                  <div>
+                                    <div class="float-right">{{Date_Dmde}}</div>
+                                    <h3 style="color: orange">{{Dren_Origine_Dmde}}</h3>
+                                    <p class="mb-0">
+                                      <span style="color: green; font-weight: bold"
+                                        >DRENA D'ORIGINE</span
+                                      >
+                                      : {{Dren_Origine_Dmde}}<br />
+                                      <span style="color: green; font-weight: bold"
+                                        >DRENA DE DESTINATION</span
+                                      >
+                                      : {{Dren_Destination_Dmde}} <br />
+
+                                      <span style="color: green; font-weight: bold"
+                                        >CONTACT</span
+                                      >
+                                      : {{agent_demandeur.Contact_Agt}}<br />
+                                    </p>
+                                  </div>
+                                  <div
+                                    style="display: flex; justify-content: flex-end"
+                                  >
+                                    <a
+                                      class="btn btn-success"
+                                    href='/apercu-dmde/{{_id}}'
+                                    >
+                                      Consulter
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                       
+                        {{/each}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+      </div>

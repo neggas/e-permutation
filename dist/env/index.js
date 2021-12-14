@@ -1,0 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SALT = exports.MONGO_DB = exports.MONGO_HOST = exports.MONGO_PASS = exports.MONGO_USER = exports.DOMAIN = exports.PRIMARY_COLOR = exports.NODE_ENV = void 0;
+const dotenv = require("dotenv");
+dotenv.config();
+const NODE_ENV = process.env.NODE_ENV || 'development';
+exports.NODE_ENV = NODE_ENV;
+const PRIMARY_COLOR = process.env.PRIMARY_COLOR || '#87e8de';
+exports.PRIMARY_COLOR = PRIMARY_COLOR;
+const DOMAIN = process.env.DOMAIN || 'localhost';
+exports.DOMAIN = DOMAIN;
+const MONGO_USER = process.env.MONGO_USER || 'root';
+exports.MONGO_USER = MONGO_USER;
+const MONGO_PASS = process.env.MONGO_PASS || 'root';
+exports.MONGO_PASS = MONGO_PASS;
+const MONGO_HOST = process.env.MONGO_HOST || '@cluster0.trhjg.mongodb.net';
+exports.MONGO_HOST = MONGO_HOST;
+const MONGO_DB = process.env.MONGO_DB || 'e-permutations';
+exports.MONGO_DB = MONGO_DB;
+const SALT = +process.env.SALT || 10;
+exports.SALT = SALT;
+//# sourceMappingURL=index.js.map
