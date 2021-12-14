@@ -15,7 +15,10 @@ async function bootstrap() {
         DemandeId: (demandeId) => (0, utils_1.formatDemandeId)(demandeId)
     };
     app.engine('.hbs', (0, express_handlebars_1.engine)({
-        extname: ".hbs", defaultLayout: 'main', helpers
+        extname: ".hbs",
+        defaultLayout: 'main',
+        helpers,
+        partialsDir: (0, path_1.join)(__dirname, '..', 'views', 'partials')
     }));
     app.set('views', viewsPath);
     app.set('view engine', '.hbs');

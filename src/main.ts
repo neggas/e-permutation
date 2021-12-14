@@ -22,7 +22,10 @@ async function bootstrap() {
     }
 
   app.engine('.hbs',engine({
-    extname:".hbs",defaultLayout:'main',helpers
+    extname:".hbs",
+    defaultLayout:'main',
+    helpers,
+    partialsDir:join(__dirname, '..','views','partials')
   }));
 
   app.set('views', viewsPath);
