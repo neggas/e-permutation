@@ -9,17 +9,17 @@ export declare class AppController {
     root(): Promise<{
         demandes: {
             Date_Dmde: string;
-            Dren_Destination_Dmde: string;
-            Insp_Destination_Dmde: string;
-            _id: any;
-            __v?: any;
-            id?: any;
             Annee_Scolaire_Dmnde: string;
             Dren_Origine_Dmde: string;
+            Dren_Destination_Dmde: string;
+            Insp_Destination_Dmde: string;
             Insp_Origin_Dmde: string;
             Libelle_Statut_Dmde: string;
             agent_demandeur: import("http").Agent;
             agents_interesse: import("mongoose").LeanDocument<import("http").Agent>[];
+            _id: any;
+            __v?: any;
+            id?: any;
         }[];
     }>;
     voirDemande(id: string): Promise<{
@@ -32,5 +32,8 @@ export declare class AppController {
     faireUneDemande(payload: any): Promise<import("./agents/Models/agents.model").Agent & import("mongoose").Document<any, any, any> & {
         _id: any;
     }>;
-    connexion(): Promise<void>;
+    connexion(req: any): {
+        message: string;
+    };
+    login(): Promise<void>;
 }

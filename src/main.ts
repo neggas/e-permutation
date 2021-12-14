@@ -5,7 +5,8 @@ import { join } from 'path';
 import { engine } from 'express-handlebars';
 import flash = require('connect-flash');
 import  {dateNaissance,formatDemandeId} from "./utils"
-
+import * as session from 'express-session';
+import * as passport from 'passport';
 
 
 async function bootstrap() {
@@ -30,8 +31,21 @@ async function bootstrap() {
 
   app.set('views', viewsPath);
   app.set('view engine', '.hbs');
+
+  app.use(
+    session({
+      secret: 'nest cats',
+      resave: false,
+      saveUninitialized: false,
+    }),
+  );
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+  
   app.use(flash());
 
+ 
 
 
   await app.listen(3000);

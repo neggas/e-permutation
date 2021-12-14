@@ -9,13 +9,15 @@
         </div>
         <div class="card-body">
           <p class="login-box-msg">Connectez-vous à votre espace</p>
-
-          <form action="./agent/dash-dmdeur.php" method="get">
+          <p class="login-box-msg" style="color:#dc3545;">{{message}}</p>
+        
+          <form action="/connexion" method="post">
             <div class="input-group mb-3">
               <input
                 type="email"
                 class="form-control"
-                placeholder="Matricule"
+                placeholder="Email"
+                name="Email_Agt"
               />
               <div class="input-group-append">
                 <div class="input-group-text">
@@ -28,6 +30,7 @@
                 type="password"
                 class="form-control"
                 placeholder="Mots de Passe"
+                name="Pass_Agt"
               />
               <div class="input-group-append">
                 <div class="input-group-text">

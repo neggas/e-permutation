@@ -1,10 +1,13 @@
-import { Body, Controller, Get,Post,Render,Param } from '@nestjs/common';
+import { Body, Controller, Get,Post,Render,Param,UseGuards,Request, UseFilters } from '@nestjs/common';
 import { AgentsService } from './agents/agents.service';
 import { AppService } from './app.service';
 import { DemandesService } from './demandes/demandes.service';
-import {formatDate} from "./utils/date"
+import {formatDate} from "./utils/date";
+import {LoginGuard} from "./auth/guards/login.guard"
+import { AuthExceptionFilter } from './auth/filters/auth-exceptions.filter';
 
 @Controller()
+@UseFilters(AuthExceptionFilter)
 export class AppController {
   constructor(
     private readonly appService: AppService,
@@ -37,6 +40,7 @@ export class AppController {
 
   }
 
+
   @Get("/resultats")
   @Render('resultats')
   async resultats(){
@@ -53,7 +57,14 @@ export class AppController {
 
   @Get("/connexion")
   @Render('connexion')
-  async connexion(){
-
+  connexion(@Request() req):{message:string}{
+    return {message:req.flash('loginError')}
   }
+
+  @UseGuards(LoginGuard)
+  @Post("/connexion")
+  @Render('connexion')
+  async login(){
+    
+  } 
 }

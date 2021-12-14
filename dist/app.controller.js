@@ -18,6 +18,8 @@ const agents_service_1 = require("./agents/agents.service");
 const app_service_1 = require("./app.service");
 const demandes_service_1 = require("./demandes/demandes.service");
 const date_1 = require("./utils/date");
+const login_guard_1 = require("./auth/guards/login.guard");
+const auth_exceptions_filter_1 = require("./auth/filters/auth-exceptions.filter");
 let AppController = class AppController {
     constructor(appService, agentService, demandeService) {
         this.appService = appService;
@@ -41,7 +43,10 @@ let AppController = class AppController {
     async faireUneDemande(payload) {
         return await this.agentService.registerAgent(payload);
     }
-    async connexion() {
+    connexion(req) {
+        return { message: req.flash('loginError') };
+    }
+    async login() {
     }
 };
 __decorate([
@@ -84,12 +89,22 @@ __decorate([
 __decorate([
     (0, common_1.Get)("/connexion"),
     (0, common_1.Render)('connexion'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Object)
+], AppController.prototype, "connexion", null);
+__decorate([
+    (0, common_1.UseGuards)(login_guard_1.LoginGuard),
+    (0, common_1.Post)("/connexion"),
+    (0, common_1.Render)('connexion'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], AppController.prototype, "connexion", null);
+], AppController.prototype, "login", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
+    (0, common_1.UseFilters)(auth_exceptions_filter_1.AuthExceptionFilter),
     __metadata("design:paramtypes", [app_service_1.AppService,
         agents_service_1.AgentsService,
         demandes_service_1.DemandesService])

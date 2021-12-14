@@ -6,6 +6,8 @@ const path_1 = require("path");
 const express_handlebars_1 = require("express-handlebars");
 const flash = require("connect-flash");
 const utils_1 = require("./utils");
+const session = require("express-session");
+const passport = require("passport");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.useStaticAssets((0, path_1.join)(__dirname, '..', 'public'));
@@ -22,6 +24,13 @@ async function bootstrap() {
     }));
     app.set('views', viewsPath);
     app.set('view engine', '.hbs');
+    app.use(session({
+        secret: 'nest cats',
+        resave: false,
+        saveUninitialized: false,
+    }));
+    app.use(passport.initialize());
+    app.use(passport.session());
     app.use(flash());
     await app.listen(3000);
 }
