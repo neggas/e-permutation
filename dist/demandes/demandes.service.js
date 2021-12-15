@@ -31,8 +31,8 @@ let DemandesService = class DemandesService {
     async findOne(id) {
         return await this.DemandeModel.findById(id).lean().populate("agent_demandeur").exec();
     }
-    update(id, updateDemandeDto) {
-        return `This action updates a #${id} demande`;
+    async update(id, payload) {
+        return await this.DemandeModel.findByIdAndUpdate({ _id: id }, Object.assign({}, payload), { new: true }).exec();
     }
     remove(id) {
         return `This action removes a #${id} demande`;

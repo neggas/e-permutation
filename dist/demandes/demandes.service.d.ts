@@ -12,6 +12,8 @@ export declare class DemandesService {
     findOne(id: string): Promise<import("mongoose").LeanDocument<Demande & import("mongoose").Document<any, any, any> & {
         _id: any;
     }>>;
-    update(id: number, updateDemandeDto: any): string;
+    update(id: string, payload: any): Promise<Demande & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
     remove(id: number): string;
 }

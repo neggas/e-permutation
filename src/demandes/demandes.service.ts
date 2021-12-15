@@ -21,8 +21,8 @@ export class DemandesService {
     return await this.DemandeModel.findById(id).lean().populate("agent_demandeur").exec();
   }
 
-  update(id: number, updateDemandeDto) {
-    return `This action updates a #${id} demande`;
+  async update(id: string,payload) {
+    return await this.DemandeModel.findByIdAndUpdate({_id:id},{...payload},{new:true}).exec();
   }
 
   remove(id: number) {

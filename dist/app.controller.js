@@ -50,8 +50,21 @@ let AppController = class AppController {
         const { _doc: agent } = req.user;
         const demande = await this.demandeService.findOne(id);
         let currentAgent = Object.assign(Object.assign({}, agent), { isNotMyPost: agent.demande != id });
-        console.log(currentAgent);
         return { demande: Object.assign(Object.assign({}, demande), { currentAgent }) };
+    }
+    async postResponse(id, req, res) {
+        const demande = await this.demandeService.findOne(id);
+        const { _doc: agent } = req.user;
+        demande.agents_interesse.push(agent._id);
+        const updatedDemande = await this.demandeService.update(id, demande);
+        if (updatedDemande) {
+            return res.redirect("/");
+        }
+    }
+    async responseDemande(id, req) {
+        const { _doc: agent } = req.user;
+        const demande = await this.demandeService.findOne(id);
+        return { data: Object.assign(Object.assign({}, agent), demande) };
     }
 };
 __decorate([
@@ -111,6 +124,26 @@ __decorate([
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "voirDemande", null);
+__decorate([
+    (0, common_1.UseGuards)(authenticated_guard_1.AuthenticatedGuard),
+    (0, common_1.Post)("/reponse/:id"),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, Object]),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "postResponse", null);
+__decorate([
+    (0, common_1.UseGuards)(authenticated_guard_1.AuthenticatedGuard),
+    (0, common_1.Get)("/reponse/:id"),
+    (0, common_1.Render)("reponse-demande"),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "responseDemande", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
     (0, common_1.UseFilters)(auth_exceptions_filter_1.AuthExceptionFilter),

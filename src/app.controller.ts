@@ -83,6 +83,29 @@ export class AppController {
     return {demande : {...demande,currentAgent}}
   }
 
+  @UseGuards(AuthenticatedGuard)
+  @Post("/reponse/:id")
+  async postResponse(@Param('id') id : string,@Request() req,@Res() res:Response){
+    const demande = await this.demandeService.findOne(id);
+    const {_doc:agent} = req.user
+    demande.agents_interesse.push(agent._id);
+    const updatedDemande = await this.demandeService.update(id,demande)
+
+    if(updatedDemande){
+      return res.redirect("/")
+    }
+  }
+
+  @UseGuards(AuthenticatedGuard)
+  @Get("/reponse/:id")
+  @Render("reponse-demande")
+  async responseDemande(@Param('id') id : string,@Request() req){
+    const {_doc:agent} = req.user
+    const demande = await this.demandeService.findOne(id);
+
+    return {data : {...agent,...demande}}
+  }
+
 
 
 

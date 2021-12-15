@@ -49,4 +49,8 @@ export declare class AppController {
             id?: any;
         };
     }>;
+    postResponse(id: string, req: any, res: Response): Promise<void>;
+    responseDemande(id: string, req: any): Promise<{
+        data: any;
+    }>;
 }
