@@ -25,6 +25,20 @@ export class DemandesService {
     return await this.DemandeModel.findByIdAndUpdate({_id:id},{...payload},{new:true}).exec();
   }
 
+  async allAgentDemande(idAgent:string){
+    let demandes =  await this.DemandeModel.find().exec();
+    
+   
+    let modemandes = demandes.map(dmd =>({...dmd,agent_demandeur:dmd.agent_demandeur?.toString()}))
+    let filtered = await modemandes.filter(dmd => dmd.agent_demandeur == idAgent);
+    return   filtered
+  }
+
+  async demandeEffectue(idAgent:string){
+    const filtered = await this.allAgentDemande(idAgent);
+    return await filtered.filter(dmd => dmd.Libelle_Statut_Dmde?.toLowerCase() == 'effectue')
+  }
+
   remove(id: number) {
     return `This action removes a #${id} demande`;
   }

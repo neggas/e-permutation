@@ -34,6 +34,16 @@ let DemandesService = class DemandesService {
     async update(id, payload) {
         return await this.DemandeModel.findByIdAndUpdate({ _id: id }, Object.assign({}, payload), { new: true }).exec();
     }
+    async allAgentDemande(idAgent) {
+        let demandes = await this.DemandeModel.find().exec();
+        let modemandes = demandes.map(dmd => { var _a; return (Object.assign(Object.assign({}, dmd), { agent_demandeur: (_a = dmd.agent_demandeur) === null || _a === void 0 ? void 0 : _a.toString() })); });
+        let filtered = await modemandes.filter(dmd => dmd.agent_demandeur == idAgent);
+        return filtered;
+    }
+    async demandeEffectue(idAgent) {
+        const filtered = await this.allAgentDemande(idAgent);
+        return await filtered.filter(dmd => { var _a; return ((_a = dmd.Libelle_Statut_Dmde) === null || _a === void 0 ? void 0 : _a.toLowerCase()) == 'effectue'; });
+    }
     remove(id) {
         return `This action removes a #${id} demande`;
     }

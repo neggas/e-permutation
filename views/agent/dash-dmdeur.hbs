@@ -284,8 +284,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- /.sidebar -->
       </aside>
 
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+      {{#with data}}
+           <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
           <div class="container-fluid">
@@ -298,7 +298,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- small box -->
                     <div class="small-box bg-info">
                       <div class="inner">
-                        <h3>04</h3>
+                        <h3>{{pad nb_permutation}}</h3>
 
                         <p>Demande(s) de Permutation</p>
                       </div>
@@ -315,7 +315,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- small box -->
                     <div class="small-box bg-success">
                       <div class="inner">
-                        <h3>01</h3>
+                        <h3>{{pad nb_effectuer}}</h3>
 
                         <p>Reponse(s) Favorable</p>
                       </div>
@@ -680,6 +680,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
         <!-- /.content-header -->
       </div>
+      {{/with}}
+      <!-- Content Wrapper. Contains page content -->
+     
       <!-- /.content-wrapper -->
 
       <!-- /.content -->

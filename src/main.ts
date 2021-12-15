@@ -20,6 +20,7 @@ async function bootstrap() {
     const helpers = {
       dateNaissance: (date) => dateNaissance(date),
       DemandeId:(demandeId) => formatDemandeId(demandeId),
+      pad:(number) => `${number}`.padStart(2, '0')
     }
 
   app.engine('.hbs',engine({

@@ -1135,4 +1135,12 @@ export declare class AppController {
     responseDemande(id: string, req: any): Promise<{
         data: any;
     }>;
+    contact(): void;
+    dashDmndeur(req: any): Promise<{
+        data: {
+            nb_permutation: number;
+            nb_effectuer: number;
+        };
+    }>;
+    listeDemande(req: any): void;
 }

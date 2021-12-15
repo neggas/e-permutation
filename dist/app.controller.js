@@ -30,7 +30,6 @@ let AppController = class AppController {
     async root(req) {
         const demandes = await this.demandeService.findAll();
         const _demandes = demandes.map((demande) => (Object.assign(Object.assign({}, demande), { Date_Dmde: (0, date_1.formatDate)(demande.Date_Dmde) })));
-        console.log(Object.assign(Object.assign({}, _demandes), { user: req.user }));
         return { demandes: Object.assign(Object.assign({}, _demandes), { user: req.user }) };
     }
     connexion(req) {
@@ -68,6 +67,18 @@ let AppController = class AppController {
         const { _doc: agent } = req.user;
         const demande = await this.demandeService.findOne(id);
         return { data: Object.assign(Object.assign({}, agent), demande) };
+    }
+    contact() {
+        return;
+    }
+    async dashDmndeur(req) {
+        const { _doc: agent } = req.user;
+        const demandes = await this.demandeService.allAgentDemande(agent._id.toString());
+        const demandeEffectuer = await this.demandeService.demandeEffectue(agent._id.toString());
+        return { data: { nb_permutation: demandes.length, nb_effectuer: demandeEffectuer.length } };
+    }
+    listeDemande(req) {
+        return;
     }
 };
 __decorate([
@@ -148,6 +159,30 @@ __decorate([
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "responseDemande", null);
+__decorate([
+    (0, common_1.Get)("/contact"),
+    (0, common_1.Render)("contact"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "contact", null);
+__decorate([
+    (0, common_1.UseGuards)(authenticated_guard_1.AuthenticatedGuard),
+    (0, common_1.Get)("/dashboard"),
+    (0, common_1.Render)("agent/dash-dmdeur"),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "dashDmndeur", null);
+__decorate([
+    (0, common_1.Get)("/dashboard/liste-dmd"),
+    (0, common_1.Render)("agent/liste-dmd"),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "listeDemande", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
     (0, common_1.UseFilters)(auth_exceptions_filter_1.AuthExceptionFilter),

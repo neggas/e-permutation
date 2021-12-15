@@ -34,8 +34,6 @@ export class AppController {
     const _demandes = demandes.map((demande)=>(
       {...demande,Date_Dmde:formatDate(demande.Date_Dmde)}
     ))
-
-    console.log({..._demandes,user:req.user})
     return { demandes:{..._demandes,user:req.user}};
   }
 
@@ -107,6 +105,31 @@ export class AppController {
     const demande = await this.demandeService.findOne(id);
 
     return {data : {...agent,...demande}}
+  }
+
+  
+  @Get("/contact")
+  @Render("contact")
+  contact(){
+    return;
+  }
+  
+  @UseGuards(AuthenticatedGuard)
+  @Get("/dashboard")
+  @Render("agent/dash-dmdeur")
+  async dashDmndeur(@Request() req){
+    const {_doc:agent} = req.user
+    const demandes = await this.demandeService.allAgentDemande(agent._id.toString())
+    const demandeEffectuer = await this.demandeService.demandeEffectue(agent._id.toString());
+    return {data:{nb_permutation:demandes.length,nb_effectuer:demandeEffectuer.length}}
+  }
+
+
+  @Get("/dashboard/liste-dmd")
+  @Render("agent/liste-dmd")
+  listeDemande(@Request() req){
+
+    return
   }
 
 
