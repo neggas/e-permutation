@@ -46,9 +46,12 @@ let AppController = class AppController {
     async faireUneDemande(payload) {
         return await this.agentService.registerAgent(payload);
     }
-    async voirDemande(id) {
+    async voirDemande(id, req) {
+        const { _doc: agent } = req.user;
         const demande = await this.demandeService.findOne(id);
-        return { demande };
+        let currentAgent = Object.assign(Object.assign({}, agent), { isNotMyPost: agent.demande != id });
+        console.log(currentAgent);
+        return { demande: Object.assign(Object.assign({}, demande), { currentAgent }) };
     }
 };
 __decorate([
@@ -103,8 +106,9 @@ __decorate([
     (0, common_1.Get)("/apercu-dmde/:id"),
     (0, common_1.Render)("apercu-dmde"),
     __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "voirDemande", null);
 AppController = __decorate([

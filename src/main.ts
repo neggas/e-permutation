@@ -19,7 +19,7 @@ async function bootstrap() {
 
     const helpers = {
       dateNaissance: (date) => dateNaissance(date),
-      DemandeId:(demandeId) => formatDemandeId(demandeId)
+      DemandeId:(demandeId) => formatDemandeId(demandeId),
     }
 
   app.engine('.hbs',engine({

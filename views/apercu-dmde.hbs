@@ -605,7 +605,13 @@
                 <div class="row">
                   <div class="col-md-6"></div>
                 </div>
-                <button type="submit" class="btn bg-green" style="margin: 0 10px 0 10px;" onclick="window.location.href='/inscription'"><span style="color: white;">Repondre</span></button>
+                
+               
+             
+              {{#if currentAgent.isNotMyPost}}
+                 <button type="submit" class="btn bg-green" style="margin: 0 10px 0 10px;" onclick="window.location.href='/inscription'"><span style="color: white;">Repondre</span></button>
+              {{/if}}
+               
                 <button type="submit" class="btn bg-red" style="margin: 0 10px 0 10px;" onclick="window.location.href='/'"><span style="color: white;">Fermer</span></button>
               </div>
                 </div>

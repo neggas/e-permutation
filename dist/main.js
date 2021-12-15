@@ -14,7 +14,7 @@ async function bootstrap() {
     const viewsPath = (0, path_1.join)(__dirname, '..', 'views');
     const helpers = {
         dateNaissance: (date) => (0, utils_1.dateNaissance)(date),
-        DemandeId: (demandeId) => (0, utils_1.formatDemandeId)(demandeId)
+        DemandeId: (demandeId) => (0, utils_1.formatDemandeId)(demandeId),
     };
     app.engine('.hbs', (0, express_handlebars_1.engine)({
         extname: ".hbs",

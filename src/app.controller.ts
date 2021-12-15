@@ -75,9 +75,12 @@ export class AppController {
   @UseGuards(AuthenticatedGuard)
   @Get("/apercu-dmde/:id")
   @Render("apercu-dmde")
-  async voirDemande(@Param('id') id : string){
+  async voirDemande(@Param('id') id : string,@Request() req){
+    const {_doc:agent} = req.user
     const demande = await this.demandeService.findOne(id);
-    return {demande}
+
+    let currentAgent = {...agent,isNotMyPost:agent.demande != id}
+    return {demande : {...demande,currentAgent}}
   }
 
 
