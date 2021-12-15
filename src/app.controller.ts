@@ -78,9 +78,10 @@ export class AppController {
   async voirDemande(@Param('id') id : string,@Request() req){
     const {_doc:agent} = req.user
     const demande = await this.demandeService.findOne(id);
-
-    let currentAgent = {...agent,isNotMyPost:agent.demande != id}
-    return {demande : {...demande,currentAgent}}
+    const hasApplied = demande.agents_interesse?.filter(agn => agn.toString() == agent._id.toString()).length >= 0 ? true : false
+  
+    let currentAgent = {...agent,isNotMyPost:agent.demande != id && !hasApplied}
+    return {demande : {...demande,currentAgent,hasApplied}}
   }
 
   @UseGuards(AuthenticatedGuard)

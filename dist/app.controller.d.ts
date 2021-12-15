@@ -35,6 +35,7 @@ export declare class AppController {
     voirDemande(id: string, req: any): Promise<{
         demande: {
             currentAgent: any;
+            hasApplied: boolean;
             Date_Dmde: Date;
             Annee_Scolaire_Dmnde: string;
             Dren_Origine_Dmde: string;

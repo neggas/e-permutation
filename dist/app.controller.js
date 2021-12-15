@@ -47,10 +47,12 @@ let AppController = class AppController {
         return await this.agentService.registerAgent(payload);
     }
     async voirDemande(id, req) {
+        var _a;
         const { _doc: agent } = req.user;
         const demande = await this.demandeService.findOne(id);
-        let currentAgent = Object.assign(Object.assign({}, agent), { isNotMyPost: agent.demande != id });
-        return { demande: Object.assign(Object.assign({}, demande), { currentAgent }) };
+        const hasApplied = ((_a = demande.agents_interesse) === null || _a === void 0 ? void 0 : _a.filter(agn => agn.toString() == agent._id.toString()).length) >= 0 ? true : false;
+        let currentAgent = Object.assign(Object.assign({}, agent), { isNotMyPost: agent.demande != id && !hasApplied });
+        return { demande: Object.assign(Object.assign({}, demande), { currentAgent, hasApplied }) };
     }
     async postResponse(id, req, res) {
         const demande = await this.demandeService.findOne(id);
