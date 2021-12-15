@@ -29,13 +29,14 @@ export class AppController {
 
   @Get('/')
   @Render('index')
-  async root() {
+  async root(@Request() req) {
     const demandes = await this.demandeService.findAll();
     const _demandes = demandes.map((demande)=>(
       {...demande,Date_Dmde:formatDate(demande.Date_Dmde)}
     ))
 
-    return { demandes:_demandes};
+    console.log({..._demandes,user:req.user})
+    return { demandes:{..._demandes,user:req.user}};
   }
 
   @Get("/connexion")
@@ -48,6 +49,7 @@ export class AppController {
   @Post("/connexion")
 
   login(@Request() req,@Res() res:Response){ 
+
    res.redirect('/')
   } 
 

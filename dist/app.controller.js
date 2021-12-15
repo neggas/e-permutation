@@ -27,10 +27,11 @@ let AppController = class AppController {
         this.agentService = agentService;
         this.demandeService = demandeService;
     }
-    async root() {
+    async root(req) {
         const demandes = await this.demandeService.findAll();
         const _demandes = demandes.map((demande) => (Object.assign(Object.assign({}, demande), { Date_Dmde: (0, date_1.formatDate)(demande.Date_Dmde) })));
-        return { demandes: _demandes };
+        console.log(Object.assign(Object.assign({}, _demandes), { user: req.user }));
+        return { demandes: Object.assign(Object.assign({}, _demandes), { user: req.user }) };
     }
     connexion(req) {
         return { message: req.flash('loginError') };
@@ -72,8 +73,9 @@ let AppController = class AppController {
 __decorate([
     (0, common_1.Get)('/'),
     (0, common_1.Render)('index'),
+    __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "root", null);
 __decorate([
