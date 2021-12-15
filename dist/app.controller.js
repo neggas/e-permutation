@@ -16,10 +16,11 @@ exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const agents_service_1 = require("./agents/agents.service");
 const app_service_1 = require("./app.service");
+const auth_exceptions_filter_1 = require("./auth/filters/auth-exceptions.filter");
+const authenticated_guard_1 = require("./auth/guards/authenticated.guard");
+const login_guard_1 = require("./auth/guards/login.guard");
 const demandes_service_1 = require("./demandes/demandes.service");
 const date_1 = require("./utils/date");
-const login_guard_1 = require("./auth/guards/login.guard");
-const auth_exceptions_filter_1 = require("./auth/filters/auth-exceptions.filter");
 let AppController = class AppController {
     constructor(appService, agentService, demandeService) {
         this.appService = appService;
@@ -31,9 +32,11 @@ let AppController = class AppController {
         const _demandes = demandes.map((demande) => (Object.assign(Object.assign({}, demande), { Date_Dmde: (0, date_1.formatDate)(demande.Date_Dmde) })));
         return { demandes: _demandes };
     }
-    async voirDemande(id) {
-        const demande = await this.demandeService.findOne(id);
-        return { demande };
+    connexion(req) {
+        return { message: req.flash('loginError') };
+    }
+    login(req, res) {
+        res.redirect('/');
     }
     async inscription() {
     }
@@ -43,27 +46,35 @@ let AppController = class AppController {
     async faireUneDemande(payload) {
         return await this.agentService.registerAgent(payload);
     }
-    connexion(req) {
-        return { message: req.flash('loginError') };
-    }
-    async login() {
+    async voirDemande(id) {
+        const demande = await this.demandeService.findOne(id);
+        return { demande };
     }
 };
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)('/'),
     (0, common_1.Render)('index'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "root", null);
 __decorate([
-    (0, common_1.Get)("/apercu-dmde/:id"),
-    (0, common_1.Render)("apercu-dmde"),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)("/connexion"),
+    (0, common_1.Render)('connexion'),
+    __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], AppController.prototype, "voirDemande", null);
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Object)
+], AppController.prototype, "connexion", null);
+__decorate([
+    (0, common_1.UseGuards)(login_guard_1.LoginGuard),
+    (0, common_1.Post)("/connexion"),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "login", null);
 __decorate([
     (0, common_1.Get)("/inscription"),
     (0, common_1.Render)('inscription'),
@@ -72,6 +83,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "inscription", null);
 __decorate([
+    (0, common_1.UseGuards)(authenticated_guard_1.AuthenticatedGuard),
     (0, common_1.Get)("/resultats"),
     (0, common_1.Render)('resultats'),
     __metadata("design:type", Function),
@@ -87,21 +99,14 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "faireUneDemande", null);
 __decorate([
-    (0, common_1.Get)("/connexion"),
-    (0, common_1.Render)('connexion'),
-    __param(0, (0, common_1.Request)()),
+    (0, common_1.UseGuards)(authenticated_guard_1.AuthenticatedGuard),
+    (0, common_1.Get)("/apercu-dmde/:id"),
+    (0, common_1.Render)("apercu-dmde"),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Object)
-], AppController.prototype, "connexion", null);
-__decorate([
-    (0, common_1.UseGuards)(login_guard_1.LoginGuard),
-    (0, common_1.Post)("/connexion"),
-    (0, common_1.Render)('connexion'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], AppController.prototype, "login", null);
+], AppController.prototype, "voirDemande", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
     (0, common_1.UseFilters)(auth_exceptions_filter_1.AuthExceptionFilter),

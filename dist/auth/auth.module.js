@@ -9,16 +9,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthModule = void 0;
 const common_1 = require("@nestjs/common");
 const agents_module_1 = require("../agents/agents.module");
+const auth_controller_1 = require("./auth.controller");
 const auth_service_1 = require("./auth.service");
 const session_serializer_1 = require("./serializer/session.serializer");
-const local_trategy_1 = require("./strategy/local.trategy");
-const passport_1 = require("@nestjs/passport");
+const local_strategy_1 = require("./strategy/local.strategy");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
     (0, common_1.Module)({
-        providers: [auth_service_1.AuthService, local_trategy_1.LocalStrategy, session_serializer_1.SessionSerializer],
-        imports: [agents_module_1.AgentsModule, passport_1.PassportModule]
+        controllers: [auth_controller_1.AuthController],
+        providers: [auth_service_1.AuthService, local_strategy_1.LocalStrategy, session_serializer_1.SessionSerializer],
+        imports: [agents_module_1.AgentsModule],
+        exports: [auth_service_1.AuthService]
     })
 ], AuthModule);
 exports.AuthModule = AuthModule;

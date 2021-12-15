@@ -27,10 +27,10 @@ let AuthService = class AuthService {
     constructor(agentService) {
         this.agentService = agentService;
     }
-    async validateUser(Email_Agt, Pass_Agt) {
-        const user = await this.agentService.findAgent({ Email_Agt });
-        if (user && user.Pass_Agt === Pass_Agt) {
-            const { Pass_Agt } = user, result = __rest(user, ["Pass_Agt"]);
+    async validateUser(email, pass) {
+        const agent = await this.agentService.findAgent(email);
+        if (agent && agent.Pass_Agt === pass) {
+            const { Pass_Agt } = agent, result = __rest(agent, ["Pass_Agt"]);
             return result;
         }
         return null;

@@ -10,6 +10,7 @@
         <div class="card-body">
           <p class="login-box-msg">Connectez-vous à votre espace</p>
           <p class="login-box-msg" style="color:#dc3545;">{{message}}</p>
+             <p class="login-box-msg" style="color:#28a745;">{{loginSucces}}</p>
         
           <form action="/connexion" method="post">
             <div class="input-group mb-3">
@@ -17,7 +18,7 @@
                 type="email"
                 class="form-control"
                 placeholder="Email"
-                name="Email_Agt"
+                name="username"
               />
               <div class="input-group-append">
                 <div class="input-group-text">
@@ -30,7 +31,7 @@
                 type="password"
                 class="form-control"
                 placeholder="Mots de Passe"
-                name="Pass_Agt"
+                name="password"
               />
               <div class="input-group-append">
                 <div class="input-group-text">

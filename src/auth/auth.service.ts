@@ -1,16 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { AgentsService } from 'src/agents/agents.service';
 
+
 @Injectable()
 export class AuthService {
     constructor(private readonly agentService : AgentsService){}
 
-    async validateUser(Email_Agt,Pass_Agt):Promise<any>{
-        const user = await this.agentService.findAgent({Email_Agt});
-        if (user && user.Pass_Agt === Pass_Agt) {
-          const { Pass_Agt, ...result } = user;
-          return result;
+    async validateUser(email,pass) : Promise<any>{
+        const agent = await this.agentService.findAgent(email);
+        if (agent && agent.Pass_Agt === pass) {
+            const { Pass_Agt, ...result } = agent;
+            return result;
         }
+        
         return null;
     }
 }

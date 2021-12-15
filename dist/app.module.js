@@ -20,7 +20,9 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [agents_module_1.AgentsModule,
-            mongoose_1.MongooseModule.forRoot(`mongodb+srv://${env_1.MONGO_USER}:${env_1.MONGO_PASS}${env_1.MONGO_HOST}/${env_1.MONGO_DB}?retryWrites=true&w=majority`), demandes_module_1.DemandesModule, auth_module_1.AuthModule
+            mongoose_1.MongooseModule.forRoot(`mongodb+srv://${env_1.MONGO_USER}:${env_1.MONGO_PASS}${env_1.MONGO_HOST}/${env_1.MONGO_DB}?retryWrites=true&w=majority`),
+            demandes_module_1.DemandesModule,
+            auth_module_1.AuthModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

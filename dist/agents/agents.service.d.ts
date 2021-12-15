@@ -9,7 +9,7 @@ export declare class AgentsService {
         _id: any;
     }>;
     private updateAgent;
-    findAgent(payload: any): Promise<Agent & import("mongoose").Document<any, any, any> & {
+    findAgent(payload: string): Promise<Agent & import("mongoose").Document<any, any, any> & {
         _id: any;
     }>;
 }

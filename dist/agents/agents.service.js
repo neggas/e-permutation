@@ -58,7 +58,8 @@ let AgentsService = class AgentsService {
         return await this.AgentModel.findByIdAndUpdate(agentDocument._id, Object.assign({}, agentDocument), { new: true }).exec();
     }
     async findAgent(payload) {
-        return await this.AgentModel.findOne(Object.assign({}, payload)).exec();
+        const agent = await this.AgentModel.findOne({ Email_Agt: payload }).exec();
+        return agent;
     }
 };
 AgentsService = __decorate([

@@ -9,9 +9,12 @@ import { AgentsService } from './agents/agents.service';
 import { DemandesModule } from './demandes/demandes.module';
 import { AuthModule } from './auth/auth.module';
 
+
 @Module({
   imports: [AgentsModule, 
-    MongooseModule.forRoot(`mongodb+srv://${MONGO_USER}:${MONGO_PASS}${MONGO_HOST}/${MONGO_DB}?retryWrites=true&w=majority`), DemandesModule, AuthModule
+    MongooseModule.forRoot(`mongodb+srv://${MONGO_USER}:${MONGO_PASS}${MONGO_HOST}/${MONGO_DB}?retryWrites=true&w=majority`),
+     DemandesModule,
+     AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

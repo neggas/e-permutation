@@ -1,6 +1,7 @@
 import { AgentsService } from './agents/agents.service';
 import { AppService } from './app.service';
 import { DemandesService } from './demandes/demandes.service';
+import { Response } from 'express';
 export declare class AppController {
     private readonly appService;
     private readonly agentService;
@@ -22,18 +23,18 @@ export declare class AppController {
             id?: any;
         }[];
     }>;
-    voirDemande(id: string): Promise<{
-        demande: import("mongoose").LeanDocument<import("./demandes/Models/demandes.model").Demande & import("mongoose").Document<any, any, any> & {
-            _id: any;
-        }>;
-    }>;
+    connexion(req: any): {
+        message: string;
+    };
+    login(req: any, res: Response): void;
     inscription(): Promise<void>;
     resultats(): Promise<void>;
     faireUneDemande(payload: any): Promise<import("./agents/Models/agents.model").Agent & import("mongoose").Document<any, any, any> & {
         _id: any;
     }>;
-    connexion(req: any): {
-        message: string;
-    };
-    login(): Promise<void>;
+    voirDemande(id: string): Promise<{
+        demande: import("mongoose").LeanDocument<import("./demandes/Models/demandes.model").Demande & import("mongoose").Document<any, any, any> & {
+            _id: any;
+        }>;
+    }>;
 }

@@ -14,12 +14,12 @@ import {
       const ctx = host.switchToHttp();
       const response = ctx.getResponse<Response>();
       const request = ctx.getRequest<Request>();
-  
+      
       if (
         exception instanceof UnauthorizedException ||
         exception instanceof ForbiddenException
       ) {
-        request.flash('loginError', 'Email ou mot de passe incorrect !');
+        request.flash('loginError', 'Email ou mot de pass incorrect');
         response.redirect('/connexion');
       } else {
         response.redirect('/error');
