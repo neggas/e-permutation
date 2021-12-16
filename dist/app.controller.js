@@ -95,8 +95,9 @@ let AppController = class AppController {
     demandeApprouve(req) {
         return;
     }
-    consultationDemande(req) {
-        return;
+    async consultationDemande(id, req) {
+        const demande = await this.demandeService.findOne(id);
+        return { demande };
     }
 };
 __decorate([
@@ -218,12 +219,13 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "demandeApprouve", null);
 __decorate([
-    (0, common_1.Get)("/dashboard/consultation_demande"),
+    (0, common_1.Get)("/dashboard/consultation_demande/:id"),
     (0, common_1.Render)("agent/consultation_demande"),
-    __param(0, (0, common_1.Request)()),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
 ], AppController.prototype, "consultationDemande", null);
 AppController = __decorate([
     (0, common_1.Controller)(),

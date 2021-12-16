@@ -1151,5 +1151,9 @@ export declare class AppController {
     }>;
     statusDemande(req: any): void;
     demandeApprouve(req: any): void;
-    consultationDemande(req: any): void;
+    consultationDemande(id: string, req: any): Promise<{
+        demande: import("mongoose").LeanDocument<import("./demandes/Models/demandes.model").Demande & import("mongoose").Document<any, any, any> & {
+            _id: any;
+        }>;
+    }>;
 }

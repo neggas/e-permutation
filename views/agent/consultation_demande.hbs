@@ -274,7 +274,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">Demande : P001</h1>
+                <h1 class="m-0">Demande : {{DemandeId demande._id}}</h1>
               </div>
               <!-- /.col -->
               <div class="col-sm-6">
@@ -322,7 +322,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           class="form-control"
                           id="exampleInputEmail1"
                           placeholder="Nom"
-                          value="KOUAKOU"
+                          value="{{demande.agent_demandeur.nom_Agt}}"
                           disabled="disabled"
                         />
                       </div>
@@ -340,7 +340,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           class="form-control"
                           id="exampleInputEmail1"
                           placeholder="Prénoms"
-                          value="ALEXANDRE"
+                          value="{{demande.agent_demandeur.prenoms_Agt}}"
                           disabled="disabled"
                         />
                       </div>
@@ -362,13 +362,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         id="exampleInputEmail1"
                         placeholder="Nom de Jeune Fille"
                         disabled="disabled"
+                        value="{{demande.agent_demandeur.Nom_Jeune_Fille_Agt}}"
                       />
                     </div>
                     <!-- /.form-group -->
                     <div class="form-group">
                       <label>Sexe</label>
                       <select class="form-control select2"disabled="disabled"  style="width: 100%">
-                        <option selected="selected">Masculin</option>
+                        <option selected="selected">{{demande.agent_demandeur.sex_Agt}}</option>
                         <option>Feminin</option>
                         <option>Masculin</option>
                       </select>
@@ -389,7 +390,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           type="text"
                           class="form-control datetimepicker-input"
                           data-target="#reservationdate"
-                          value="03/11/2021	"
+                          value="{{dateNaissance demande.agent_demandeur.Date_Naiss_agt}}	"
                           disabled="disabled"
                         />
                         <div
@@ -408,7 +409,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="form-group">
                       <label>Situation Matrimoniale</label>
                       <select class="form-control select2" disabled="disabled" style="width: 100%">
-                        <option selected="selected">Marié(e)</option>
+                        <option selected="selected">{{demande.agent_demandeur.sit_Matrimonial_Agt}}</option>
                         <option>Célibataire</option>
                         <option>Concubinage</option>
                         <option>Veuf(ve)</option>
@@ -437,7 +438,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           class="form-control"
                           data-inputmask="'mask': ['99-99-99-99-99']"
                           data-mask
-                          value="0102040544"
+                          value="{{demande.agent_demandeur.Contact_Agt}}"
                           disabled="disabled"
                         />
                       </div>
@@ -455,7 +456,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           class="form-control"
                           id="exampleInputEmail1"
                           placeholder="Email"
-                          value="alexandrekouakou@gmail.com"
+                          value="{{demande.agent_demandeur.Email_Agt}}"
                           disabled="disabled"
                         />
                       </div>
@@ -495,7 +496,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         class="form-control"
                         id="exampleInputEmail1"
                         placeholder="Matricule"
-                        value="146877M"
+                        value="{{demande.agent_demandeur.Matricule_agt}}"
                         disabled="disabled"
                       />
                     </div>
@@ -515,7 +516,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           type="text"
                           class="form-control datetimepicker-input"
                           data-target="#reservationdate"
-                          value="14/04/2001"
+                          value="{{dateNaissance demande.agent_demandeur.Date_Premier_Prise_Serv_Agt}}"
                           disabled="disabled"
                         />
                         <div
@@ -549,7 +550,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           class="form-control"
                           id="exampleInputEmail1"
                           placeholder="Emploi"
-                          value="Professeur de Lycée"
+                          value="{{demande.agent_demandeur.Emploi_Agt}}"
                           disabled="disabled"
                         />
                       </div>
@@ -567,7 +568,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           class="form-control"
                           id="exampleInputEmail1"
                           placeholder="Fonction"
-                          value="Professeur de Lycée"
+                          value="{{demande.agent_demandeur.Fonction_Agt}}"
                           disabled="disabled"
                         />
                       </div>
@@ -584,7 +585,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="form-group">
                       <label>Direction Régionale</label>
                       <select class="form-control select2" disabled="disabled" style="width: 100%">
-                        <option selected="selected">DRENA ABOISSO</option>
+                        <option selected="selected">{{demande.Dren_Origine_Dmde}}</option>
                         <option>DRENA YAMOUSSOUKRO</option>
                         <option>DRENA TOUBA</option>
                         <option>DRENA SOUBRE</option>
@@ -651,7 +652,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="form-group">
                       <label>Inspection d'Enseignement</label>
                       <select class="form-control select2" disabled="disabled" style="width: 100%">
-                        <option selected="selected">IEPP GRAND-BASSAM</option>
+                        <option selected="selected">{{demande.Insp_Origin_Dmde}}</option>
                         <option>IEPP BIN-HOUYE</option>
                         <option>IEPP DANANE</option>
                         <option>IEPP KOUAN-HOULE</option>
@@ -717,7 +718,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           class="form-control"
                           id="exampleInputEmail1"
                           placeholder="Discipline Enseignée"
-                          value="Mathématiques"
+                          value="{{demande.agent_demandeur.Discipline_Agt}}"
                           disabled="disabled"
                         />
                       </div>
@@ -756,7 +757,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="form-group">
                       <label>Direction Régionale souhaitée</label>
                       <select class="form-control select2" disabled="disabled" style="width: 100%">
-                        <option selected="selected">DRENA ADZOPE</option>
+                        <option selected="selected">{{demande.Dren_Destination_Dmde}}</option>
                         <option>DRENA YAMOUSSOUKRO</option>
                         <option>DRENA TOUBA</option>
                         <option>DRENA SOUBRE</option>
@@ -808,7 +809,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="form-group">
                       <label>Inspection d'Enseignement Souhaitée</label>
                       <select class="form-control select2" disabled="disabled" style="width: 100%">
-                        <option selected="selected">IEPP N'DOUCI</option>
+                        <option selected="selected">{{demande.Insp_Destination_Dmde}}</option>
                         <option>IEPP BIN-HOUYE</option>
                         <option>IEPP DANANE</option>
                         <option>IEPP KOUAN-HOULE</option>

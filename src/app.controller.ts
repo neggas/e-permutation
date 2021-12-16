@@ -174,11 +174,11 @@ export class AppController {
     return
   }
 
-  @Get("/dashboard/consultation_demande")
+  @Get("/dashboard/consultation_demande/:id")
   @Render("agent/consultation_demande")
-  consultationDemande(@Request() req){
-
-    return
+  async consultationDemande(@Param('id') id:string,  @Request() req){
+    const demande = await this.demandeService.findOne(id);
+    return {demande}
   }
 
 
