@@ -63,5 +63,6 @@ export declare class DemandesService {
         modelName: string;
         schema: import("mongoose").Schema<any, Model<any, any, any, any>, any>;
     }[]>;
+    getAnwserTimes(idAgent: string): Promise<number>;
     remove(id: number): string;
 }

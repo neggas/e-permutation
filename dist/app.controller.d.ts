@@ -1141,6 +1141,7 @@ export declare class AppController {
             nb_permutation: number;
             nb_effectuer: number;
             agent: any;
+            answerTime: number;
         };
     }>;
     listeDemande(req: any): void;

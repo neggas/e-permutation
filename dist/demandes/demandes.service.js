@@ -44,6 +44,16 @@ let DemandesService = class DemandesService {
         const filtered = await this.allAgentDemande(idAgent);
         return await filtered.filter(dmd => { var _a; return ((_a = dmd.Libelle_Statut_Dmde) === null || _a === void 0 ? void 0 : _a.toLowerCase()) == 'effectue'; });
     }
+    async getAnwserTimes(idAgent) {
+        const agentDemande = await this.allAgentDemande(idAgent);
+        let interaction = 0;
+        agentDemande.forEach((agent) => {
+            if (agent.agents_interesse) {
+                interaction += agent.agents_interesse.length;
+            }
+        });
+        return interaction;
+    }
     remove(id) {
         return `This action removes a #${id} demande`;
     }

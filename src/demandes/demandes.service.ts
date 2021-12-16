@@ -39,6 +39,19 @@ export class DemandesService {
     return await filtered.filter(dmd => dmd.Libelle_Statut_Dmde?.toLowerCase() == 'effectue')
   }
 
+  async getAnwserTimes(idAgent:string){
+    const agentDemande = await this.allAgentDemande(idAgent)
+    let interaction = 0;
+    agentDemande.forEach((agent) => {
+      if(agent.agents_interesse){
+        interaction += agent.agents_interesse.length;
+      }
+
+    })
+
+    return interaction;
+  }
+
   remove(id: number) {
     return `This action removes a #${id} demande`;
   }

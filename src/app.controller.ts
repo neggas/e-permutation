@@ -50,7 +50,7 @@ export class AppController {
     const userId = req.user._doc._id.toString()
     const nb_connexon =  req.user._doc.nb_connexon += 1;
     const agent = await this.agentService.updateAgentConexion(userId,nb_connexon);
-    
+
     res.redirect('/')
   } 
 
@@ -124,9 +124,13 @@ export class AppController {
     const {_doc:agent} = req.user
     const demandes = await this.demandeService.allAgentDemande(agent._id.toString())
     const demandeEffectuer = await this.demandeService.demandeEffectue(agent._id.toString());
+
+    const answerTime = await this.demandeService.getAnwserTimes(agent._id.toString())
+
+
     return {
       data:{
-        nb_permutation:demandes.length,nb_effectuer:demandeEffectuer.length,agent
+        nb_permutation:demandes.length,nb_effectuer:demandeEffectuer.length,agent,answerTime
       }
     }
   }
