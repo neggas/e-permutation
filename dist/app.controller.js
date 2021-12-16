@@ -41,10 +41,11 @@ let AppController = class AppController {
         const agent = await this.agentService.updateAgentConexion(userId, nb_connexon);
         res.redirect('/');
     }
-    async inscription() {
+    async inscription(req) {
+        return { agent: req.user };
     }
-    async resultats() {
-        return;
+    async resultats(req) {
+        return { agent: req.user };
     }
     async faireUneDemande(payload) {
         return await this.agentService.registerAgent(payload);
@@ -71,8 +72,8 @@ let AppController = class AppController {
         const demande = await this.demandeService.findOne(id);
         return { data: Object.assign(Object.assign({}, agent), demande) };
     }
-    contact() {
-        return;
+    contact(req) {
+        return { agent: req.user };
     }
     async dashDmndeur(req) {
         const { _doc: agent } = req.user;
@@ -128,16 +129,18 @@ __decorate([
 __decorate([
     (0, common_1.Get)("/inscription"),
     (0, common_1.Render)('inscription'),
+    __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "inscription", null);
 __decorate([
     (0, common_1.UseGuards)(authenticated_guard_1.AuthenticatedGuard),
     (0, common_1.Get)("/resultats"),
     (0, common_1.Render)('resultats'),
+    __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "resultats", null);
 __decorate([
@@ -181,8 +184,9 @@ __decorate([
 __decorate([
     (0, common_1.Get)("/contact"),
     (0, common_1.Render)("contact"),
+    __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "contact", null);
 __decorate([
@@ -195,6 +199,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "dashDmndeur", null);
 __decorate([
+    (0, common_1.UseGuards)(authenticated_guard_1.AuthenticatedGuard),
     (0, common_1.Get)("/dashboard/liste-dmd"),
     (0, common_1.Render)("agent/liste-dmd"),
     __param(0, (0, common_1.Request)()),
@@ -203,6 +208,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "listeDemande", null);
 __decorate([
+    (0, common_1.UseGuards)(authenticated_guard_1.AuthenticatedGuard),
     (0, common_1.Get)("/dashboard/statut-dmd"),
     (0, common_1.Render)("agent/statut-dmd"),
     __param(0, (0, common_1.Request)()),
@@ -211,6 +217,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "statusDemande", null);
 __decorate([
+    (0, common_1.UseGuards)(authenticated_guard_1.AuthenticatedGuard),
     (0, common_1.Get)("/dashboard/dmd-approuvee"),
     (0, common_1.Render)("agent/dmd-approuvee"),
     __param(0, (0, common_1.Request)()),
@@ -219,6 +226,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "demandeApprouve", null);
 __decorate([
+    (0, common_1.UseGuards)(authenticated_guard_1.AuthenticatedGuard),
     (0, common_1.Get)("/dashboard/consultation_demande/:id"),
     (0, common_1.Render)("agent/consultation_demande"),
     __param(0, (0, common_1.Param)('id')),

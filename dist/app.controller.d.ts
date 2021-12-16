@@ -1108,8 +1108,12 @@ export declare class AppController {
         message: string;
     };
     login(req: any, res: Response): Promise<void>;
-    inscription(): Promise<void>;
-    resultats(): Promise<void>;
+    inscription(req: any): Promise<{
+        agent: any;
+    }>;
+    resultats(req: any): Promise<{
+        agent: any;
+    }>;
     faireUneDemande(payload: any): Promise<import("./agents/Models/agents.model").Agent & import("mongoose").Document<any, any, any> & {
         _id: any;
     }>;
@@ -1135,7 +1139,9 @@ export declare class AppController {
     responseDemande(id: string, req: any): Promise<{
         data: any;
     }>;
-    contact(): void;
+    contact(req: any): {
+        agent: any;
+    };
     dashDmndeur(req: any): Promise<{
         data: {
             nb_permutation: number;

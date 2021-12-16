@@ -62,16 +62,17 @@ export class AppController {
 
   @Get("/inscription")
   @Render('inscription')
-  async inscription(){
+  async inscription(@Request() req){
 
+    return {agent:req.user}
   }
 
   // VOIR RESULTAT
   @UseGuards(AuthenticatedGuard)
   @Get("/resultats")
   @Render('resultats')
-  async resultats(){
-    return;
+  async resultats(@Request() req){
+    return  {agent:req.user}
   }
   
 
@@ -125,8 +126,8 @@ export class AppController {
   // Contact
   @Get("/contact")
   @Render("contact")
-  contact(){
-    return;
+  contact(@Request() req){
+    return {agent:req.user};
   }
   
 
@@ -150,6 +151,8 @@ export class AppController {
   }
 
 
+  // LISTE DES DEMANDES
+  @UseGuards(AuthenticatedGuard)
   @Get("/dashboard/liste-dmd")
   @Render("agent/liste-dmd")
   async listeDemande(@Request() req){
@@ -159,6 +162,8 @@ export class AppController {
   }
 
   
+  // VOIR STATUS DEMANDE
+  @UseGuards(AuthenticatedGuard)
   @Get("/dashboard/statut-dmd")
   @Render("agent/statut-dmd")
   statusDemande(@Request() req){
@@ -167,6 +172,8 @@ export class AppController {
   }
 
 
+  // VOIR DEMANDE APPROUVEE
+  @UseGuards(AuthenticatedGuard)
   @Get("/dashboard/dmd-approuvee")
   @Render("agent/dmd-approuvee")
   demandeApprouve(@Request() req){
@@ -174,6 +181,9 @@ export class AppController {
     return
   }
 
+
+  // CONSULTATION DEMANDE DASHBOARD
+  @UseGuards(AuthenticatedGuard)
   @Get("/dashboard/consultation_demande/:id")
   @Render("agent/consultation_demande")
   async consultationDemande(@Param('id') id:string,  @Request() req){
