@@ -1144,5 +1144,12 @@ export declare class AppController {
             answerTime: number;
         };
     }>;
-    listeDemande(req: any): void;
+    listeDemande(req: any): Promise<{
+        demandes: import("mongoose").LeanDocument<import("./demandes/Models/demandes.model").Demande & import("mongoose").Document<any, any, any> & {
+            _id: any;
+        }>[];
+    }>;
+    statusDemande(req: any): void;
+    demandeApprouve(req: any): void;
+    consultationDemande(req: any): void;
 }

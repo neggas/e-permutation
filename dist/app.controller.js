@@ -85,7 +85,17 @@ let AppController = class AppController {
             }
         };
     }
-    listeDemande(req) {
+    async listeDemande(req) {
+        const demandes = await this.demandeService.findAll();
+        return { demandes };
+    }
+    statusDemande(req) {
+        return;
+    }
+    demandeApprouve(req) {
+        return;
+    }
+    consultationDemande(req) {
         return;
     }
 };
@@ -189,8 +199,32 @@ __decorate([
     __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], AppController.prototype, "listeDemande", null);
+__decorate([
+    (0, common_1.Get)("/dashboard/statut-dmd"),
+    (0, common_1.Render)("agent/statut-dmd"),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "statusDemande", null);
+__decorate([
+    (0, common_1.Get)("/dashboard/dmd-approuvee"),
+    (0, common_1.Render)("agent/dmd-approuvee"),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "demandeApprouve", null);
+__decorate([
+    (0, common_1.Get)("/dashboard/consultation_demande"),
+    (0, common_1.Render)("agent/consultation_demande"),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "consultationDemande", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
     (0, common_1.UseFilters)(auth_exceptions_filter_1.AuthExceptionFilter),

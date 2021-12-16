@@ -20,7 +20,10 @@ async function bootstrap() {
     const helpers = {
       dateNaissance: (date) => dateNaissance(date),
       DemandeId:(demandeId) => formatDemandeId(demandeId),
-      pad:(number) => `${number}`.padStart(2, '0')
+      pad:(number) => `${number}`.padStart(2, '0'),
+      ispending:(value) => value === "EN COUR" ?  true : false,
+      isreject:(value) => value === "REJETE" ?  true : false,
+      issuccess:(value) => value === "success" ?  true : false
     }
 
   app.engine('.hbs',engine({

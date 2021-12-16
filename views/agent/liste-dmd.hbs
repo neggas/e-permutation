@@ -289,88 +289,50 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>P0001</td>
-                      <td>03/11/2021</td>
-                      <td>IEPP GRAND-BASSAM</td>
-                      <td>IEPP N'DOUCI</td>
-                      <td>
-                        <span class="badge bg-primary"
-                          >Permutation en cours</span
-                        >
-                      </td>
-                      <td>
-                        <button
-                          type="button"
-                          class="btn btn-success"
-                          data-toggle="modal"
-                          data-target="#modal-xl"
-                          onclick="window.location.href='/dashboard/consultation_demande'"
-                        >
-                          Consulter
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>P0002</td>
-                      <td>21/11/2021</td>
-                      <td>IEPP GRAND-BASSAM</td>
-                      <td>IEPP BINGERVILLE</td>
-                      <td>
-                        <span class="badge badge-danger">Rejetée</span>
-                      </td>
-                      <td>
-                        <button
-                          type="button"
-                          class="btn btn-success"
-                          data-toggle="modal"
-                          data-target="#modal-xl"
-                          onclick="window.location.href='./consultation_demande.php'"
-                        >
-                          Consulter
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>P0003</td>
-                      <td>30/11/2021</td>
-                      <td>IEPP GRAND-BASSAM</td>
-                      <td>IEPP YOPOUGON ANANERAIE</td>
-                      <td><span class="badge bg-success">Validée</span></td>
-                      <td>
-                        <button
-                          type="button"
-                          class="btn btn-success"
-                          data-toggle="modal"
-                          data-target="#modal-xl"
-                          onclick="window.location.href='./consultation_demande.php'"
-                        >
-                          Consulter
-                        </button>
+                    {{#each demandes }}
+                       <tr>
+                      <td>{{DemandeId _id}}</td>
+                        <td>{{dateNaissance Date_Dmde}}</td>
+                        <td>{{Insp_Origin_Dmde}}</td>
+                        <td>{{Insp_Destination_Dmde}}</td>
+
+                        {{#if (ispending Libelle_Statut_Dmde)}}
+                          <td>
+                            <span class="badge bg-primary"
+                              >Permutation en cours</span
+                            >
+                          </td>
+                        {{/if}}
+
+                        {{#if (isreject Libelle_Statut_Dmde)}}
+                          <td>
+                            <span class="badge bg-danger"
+                              >Rejetée</span
+                            >
+                          </td>
+                        {{/if}}
+
+                        {{#if (issuccess Libelle_Statut_Dmde)}}
+                          <td>
+                            <span class="badge bg-success"
+                              >Validée</span
+                            >
+                          </td>
+                        {{/if}}
+                        
+                        <td>
+                          <button
+                            type="button"
+                            class="btn btn-success"
+                            data-toggle="modal"
+                            data-target="#modal-xl"
+                            onclick="window.location.href='/dashboard/consultation_demande'"
+                          >
+                            Consulter
+                          </button>
                       </td>
                     </tr>
-                    <tr>
-                      <td>P0004</td>
-                      <td>01/12/2021</td>
-                      <td>IEPP GRAND-BASSAM</td>
-                      <td>IEPP AGOU</td>
-                      <td>
-                        <span class="badge bg-warning"
-                          >En attente de validation</span
-                        >
-                      </td>
-                      <td>
-                        <button
-                          type="button"
-                          class="btn btn-success"
-                          data-toggle="modal"
-                          data-target="#modal-xl"
-                          onclick="window.location.href='./consultation_demande.php'"
-                        >
-                          Consulter
-                        </button>
-                      </td>
-                    </tr>
+                    {{/each}}
                   </tbody>
                 </table>
               </div>

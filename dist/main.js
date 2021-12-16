@@ -15,7 +15,10 @@ async function bootstrap() {
     const helpers = {
         dateNaissance: (date) => (0, utils_1.dateNaissance)(date),
         DemandeId: (demandeId) => (0, utils_1.formatDemandeId)(demandeId),
-        pad: (number) => `${number}`.padStart(2, '0')
+        pad: (number) => `${number}`.padStart(2, '0'),
+        ispending: (value) => value === "EN COUR" ? true : false,
+        isreject: (value) => value === "REJETE" ? true : false,
+        issuccess: (value) => value === "success" ? true : false
     };
     app.engine('.hbs', (0, express_handlebars_1.engine)({
         extname: ".hbs",

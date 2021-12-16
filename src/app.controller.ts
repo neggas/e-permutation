@@ -5,7 +5,8 @@ import {
   Post,Render,
   Param,UseGuards,Request, 
   UseFilters,
-  Res 
+  Res, 
+  ConsoleLogger
 } from '@nestjs/common';
 import { AgentsService } from './agents/agents.service';
 import { AppService } from './app.service';
@@ -27,6 +28,8 @@ export class AppController {
     private readonly demandeService : DemandesService,
   ) {}
 
+
+  // Index
   @Get('/')
   @Render('index')
   async root(@Request() req) {
@@ -36,13 +39,15 @@ export class AppController {
     ))
     return { demandes:{..._demandes,user:req.user}};
   }
-
+  
+  // GET Connexion
   @Get("/connexion")
   @Render('connexion')
   connexion(@Request() req):{message:string}{
     return {message:req.flash('loginError')}
   }
 
+  // Connexion
   @UseGuards(LoginGuard)
   @Post("/connexion")
   async login(@Request() req,@Res() res:Response){ 
@@ -61,13 +66,16 @@ export class AppController {
 
   }
 
+  // VOIR RESULTAT
   @UseGuards(AuthenticatedGuard)
   @Get("/resultats")
   @Render('resultats')
   async resultats(){
     return;
   }
+  
 
+  // INSCRIPTION
   @Post("/inscription")
   @Render('inscription')
   async faireUneDemande(@Body() payload){
@@ -75,6 +83,7 @@ export class AppController {
   }
 
 
+  // Voir demande
   @UseGuards(AuthenticatedGuard)
   @Get("/apercu-dmde/:id")
   @Render("apercu-dmde")
@@ -87,6 +96,8 @@ export class AppController {
     return {demande : {...demande,currentAgent,hasApplied}}
   }
 
+
+  // Post response
   @UseGuards(AuthenticatedGuard)
   @Post("/reponse/:id")
   async postResponse(@Param('id') id : string,@Request() req,@Res() res:Response){
@@ -100,6 +111,7 @@ export class AppController {
     }
   }
 
+  // Response de mande
   @UseGuards(AuthenticatedGuard)
   @Get("/reponse/:id")
   @Render("reponse-demande")
@@ -110,13 +122,15 @@ export class AppController {
     return {data : {...agent,...demande}}
   }
 
-  
+  // Contact
   @Get("/contact")
   @Render("contact")
   contact(){
     return;
   }
   
+
+  // dashboard
   @UseGuards(AuthenticatedGuard)
   @Get("/dashboard")
   @Render("agent/dash-dmdeur")
@@ -138,10 +152,38 @@ export class AppController {
 
   @Get("/dashboard/liste-dmd")
   @Render("agent/liste-dmd")
-  listeDemande(@Request() req){
+  async listeDemande(@Request() req){
+
+    const demandes = await this.demandeService.findAll();
+    return {demandes}
+  }
+
+  
+  @Get("/dashboard/statut-dmd")
+  @Render("agent/statut-dmd")
+  statusDemande(@Request() req){
 
     return
   }
+
+
+  @Get("/dashboard/dmd-approuvee")
+  @Render("agent/dmd-approuvee")
+  demandeApprouve(@Request() req){
+
+    return
+  }
+
+  @Get("/dashboard/consultation_demande")
+  @Render("agent/consultation_demande")
+  consultationDemande(@Request() req){
+
+    return
+  }
+
+
+
+
 
 
 
