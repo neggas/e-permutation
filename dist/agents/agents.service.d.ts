@@ -8,7 +8,12 @@ export declare class AgentsService {
     registerAgent(payload: any): Promise<Agent & import("mongoose").Document<any, any, any> & {
         _id: any;
     }>;
-    private updateAgent;
+    updateAgent(agentDocument: any): Promise<Agent & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
+    updateAgentConexion(agentId: any, nb_connexon: any): Promise<Agent & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
     findAgent(payload: string): Promise<Agent & import("mongoose").Document<any, any, any> & {
         _id: any;
     }>;

@@ -88,6 +88,10 @@ __decorate([
     __metadata("design:type", String)
 ], Agent.prototype, "Email_Agt", void 0);
 __decorate([
+    (0, mongoose_1.Prop)({ required: true, default: 0 }),
+    __metadata("design:type", Number)
+], Agent.prototype, "nb_connexon", void 0);
+__decorate([
     (0, mongoose_1.Prop)({
         type: mongoose_2.Schema.Types.ObjectId,
         ref: demandes_model_1.Demande.name,

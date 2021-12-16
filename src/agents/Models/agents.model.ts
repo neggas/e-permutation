@@ -59,6 +59,9 @@ export class Agent{
     @Prop({required:true})
     Email_Agt:string;
 
+    @Prop({required:true,default:0})
+    nb_connexon:number
+
     @Prop({ 
         type: MongooseSchema.Types.ObjectId, 
         ref: Demande.name,

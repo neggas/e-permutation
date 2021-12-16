@@ -37,9 +37,13 @@ export class AgentsService {
         return  _agent;
     }
 
-    private async  updateAgent(agentDocument){
+    async  updateAgent(agentDocument){
        return await this.AgentModel.findByIdAndUpdate(agentDocument._id,{...agentDocument},{new:true}).exec()
     }
+    async updateAgentConexion(agentId,nb_connexon){
+        return await this.AgentModel.findByIdAndUpdate(agentId,{nb_connexon:nb_connexon},{new:true}).exec()
+    }
+
 
     async findAgent(payload:string){
         const agent = await this.AgentModel.findOne({Email_Agt:payload}).exec()

@@ -19,6 +19,7 @@ export declare class Agent {
     Pass_Agt: string;
     Discipline_Agt: string;
     Email_Agt: string;
+    nb_connexon: number;
     demande: Demande;
 }
 export declare type AgentDocument = Agent & Document;

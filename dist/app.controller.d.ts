@@ -1107,7 +1107,7 @@ export declare class AppController {
     connexion(req: any): {
         message: string;
     };
-    login(req: any, res: Response): void;
+    login(req: any, res: Response): Promise<void>;
     inscription(): Promise<void>;
     resultats(): Promise<void>;
     faireUneDemande(payload: any): Promise<import("./agents/Models/agents.model").Agent & import("mongoose").Document<any, any, any> & {
@@ -1140,6 +1140,7 @@ export declare class AppController {
         data: {
             nb_permutation: number;
             nb_effectuer: number;
+            agent: any;
         };
     }>;
     listeDemande(req: any): void;

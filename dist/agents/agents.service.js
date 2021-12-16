@@ -57,6 +57,9 @@ let AgentsService = class AgentsService {
     async updateAgent(agentDocument) {
         return await this.AgentModel.findByIdAndUpdate(agentDocument._id, Object.assign({}, agentDocument), { new: true }).exec();
     }
+    async updateAgentConexion(agentId, nb_connexon) {
+        return await this.AgentModel.findByIdAndUpdate(agentId, { nb_connexon: nb_connexon }, { new: true }).exec();
+    }
     async findAgent(payload) {
         const agent = await this.AgentModel.findOne({ Email_Agt: payload }).exec();
         return agent;

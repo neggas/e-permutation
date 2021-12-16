@@ -35,7 +35,10 @@ let AppController = class AppController {
     connexion(req) {
         return { message: req.flash('loginError') };
     }
-    login(req, res) {
+    async login(req, res) {
+        const userId = req.user._doc._id.toString();
+        const nb_connexon = req.user._doc.nb_connexon += 1;
+        const agent = await this.agentService.updateAgentConexion(userId, nb_connexon);
         res.redirect('/');
     }
     async inscription() {
@@ -75,7 +78,11 @@ let AppController = class AppController {
         const { _doc: agent } = req.user;
         const demandes = await this.demandeService.allAgentDemande(agent._id.toString());
         const demandeEffectuer = await this.demandeService.demandeEffectue(agent._id.toString());
-        return { data: { nb_permutation: demandes.length, nb_effectuer: demandeEffectuer.length } };
+        return {
+            data: {
+                nb_permutation: demandes.length, nb_effectuer: demandeEffectuer.length, agent
+            }
+        };
     }
     listeDemande(req) {
         return;
@@ -104,7 +111,7 @@ __decorate([
     __param(1, (0, common_1.Res)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], AppController.prototype, "login", null);
 __decorate([
     (0, common_1.Get)("/inscription"),
