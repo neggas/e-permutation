@@ -72,7 +72,12 @@ export class AppController {
   @Get("/resultats")
   @Render('resultats')
   async resultats(@Request() req){
-    return  {agent:req.user}
+    const demandes = await this.demandeService.findAll();
+    const _demandes = demandes.map((demande)=>(
+      {...demande,Date_Dmde:formatDate(demande.Date_Dmde)}
+    ))
+
+    return { demandes:{..._demandes,agent:req.user}};
   }
   
 

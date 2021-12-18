@@ -45,7 +45,9 @@ let AppController = class AppController {
         return { agent: req.user };
     }
     async resultats(req) {
-        return { agent: req.user };
+        const demandes = await this.demandeService.findAll();
+        const _demandes = demandes.map((demande) => (Object.assign(Object.assign({}, demande), { Date_Dmde: (0, date_1.formatDate)(demande.Date_Dmde) })));
+        return { demandes: Object.assign(Object.assign({}, _demandes), { agent: req.user }) };
     }
     async faireUneDemande(payload) {
         return await this.agentService.registerAgent(payload);

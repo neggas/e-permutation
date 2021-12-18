@@ -1,4 +1,4 @@
-   {{> header user=agent}}
+   {{> header user=demandes.agent}}
   <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -45,6 +45,8 @@
                     </button>
                   </div>
                 </div>
+
+              
                 <div class="card-body p-0">
                   <table class="table table-striped projects">
                     <thead>
@@ -59,61 +61,23 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>515856G</td>
-                        <td>Gouri Bi tra Hervé</td>
-                        <td>Masculin</td>
-                        <td>MINIGNAN</td>
-                        <td>SEGUELA</td>
-                        <td>
-                          <span class="badge badge-success">Effectué</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>336521R</td>
-                        <td>Kouassi Amenan Olga</td>
-                        <td>Féminin</td>
-                        <td>DALOA</td>
-                        <td>YAMOUSSOUKRO</td>
-                        <td>
-                          <span class="badge badge-success">Effectué</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>325687K</td>
-                        <td>Tra Lou Germaine</td>
-                        <td>Féminin</td>
-                        <td>BOUNA</td>
-                        <td>SASSANDRA</td>
-                        <td>
-                          <span class="badge badge-success">Effectué</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>875412D</td>
-                        <td>Koné Moussa Herbert</td>
-                        <td>Masculin</td>
-                        <td>ADZOPE</td>
-                        <td>DAOUKRO</td>
-                        <td>
-                          <span class="badge badge-success">Effectué</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>247856P</td>
-                        <td>Glahon Guélasemon Jules</td>
-                        <td>Masculin</td>
-                        <td>GUIGLO</td>
-                        <td>BONGOUANOU</td>
-                        <td>
-                          <span class="badge badge-success">Effectué</span>
-                        </td>
-                      </tr>
+                     
+                      {{#each demandes }}
+                        {{#if (issuccess Libelle_Statut_Dmde)}}
+                            <tr>
+                                <td>{{@index}}</td>
+                                  <td>{{agent_demandeur.Matricule_agt}}</td>
+                                  <td>{{agent_demandeur.nom_Agt}} {{agent_demandeur.prenoms_Agt}}</td>
+                                  <td>{{agent_demandeur.sex_Agt}}</td>
+                                  <td>{{Dren_Origine_Dmde}}</td>
+                                  <td>{{Dren_Destination_Dmde}}</td>
+                                <td>
+                                <span class="badge badge-success">Effectué</span>
+                            </td>
+                          </tr>
+                        {{/if}}
+                     
+                      {{/each}}
                     </tbody>
                   </table>
                 </div>
