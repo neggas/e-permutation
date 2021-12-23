@@ -36,7 +36,9 @@ async function bootstrap() {
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(flash());
-    await app.listen(3000);
+    const Port = process.env.PORT || 3000;
+    app.enableCors();
+    await app.listen(Port);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

@@ -30,7 +30,12 @@ let AppController = class AppController {
     async root(req) {
         const demandes = await this.demandeService.findAll();
         const _demandes = demandes.map((demande) => (Object.assign(Object.assign({}, demande), { Date_Dmde: (0, date_1.formatDate)(demande.Date_Dmde) })));
-        return { demandes: Object.assign(Object.assign({}, _demandes), { user: req.user }) };
+        return {
+            demandes: {
+                _demandes,
+                user: req.user
+            }
+        };
     }
     connexion(req) {
         return { message: req.flash('loginError') };
@@ -59,6 +64,9 @@ let AppController = class AppController {
         const hasApplied = ((_a = demande.agents_interesse) === null || _a === void 0 ? void 0 : _a.filter(agn => agn.toString() == agent._id.toString()).length) >= 0 ? true : false;
         let currentAgent = Object.assign(Object.assign({}, agent), { isNotMyPost: agent.demande != id && !hasApplied });
         return { demande: Object.assign(Object.assign({}, demande), { currentAgent, hasApplied }) };
+    }
+    nouvelleDemande(res) {
+        res.redirect("/inscription");
     }
     async postResponse(id, req, res) {
         const demande = await this.demandeService.findOne(id);
@@ -163,6 +171,13 @@ __decorate([
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "voirDemande", null);
+__decorate([
+    (0, common_1.Get)("/dashboard/nlle_demande"),
+    __param(0, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "nouvelleDemande", null);
 __decorate([
     (0, common_1.UseGuards)(authenticated_guard_1.AuthenticatedGuard),
     (0, common_1.Post)("/reponse/:id"),

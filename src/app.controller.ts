@@ -37,7 +37,13 @@ export class AppController {
     const _demandes = demandes.map((demande)=>(
       {...demande,Date_Dmde:formatDate(demande.Date_Dmde)}
     ))
-    return { demandes:{..._demandes,user:req.user}};
+
+    return { 
+        demandes:{
+          _demandes,
+          user:req.user
+        }
+    };
   }
   
   // GET Connexion
@@ -100,6 +106,11 @@ export class AppController {
   
     let currentAgent = {...agent,isNotMyPost:agent.demande != id && !hasApplied}
     return {demande : {...demande,currentAgent,hasApplied}}
+  }
+
+  @Get("/dashboard/nlle_demande")
+  nouvelleDemande(@Res() res:Response){
+    res.redirect("/inscription")
   }
 
 
