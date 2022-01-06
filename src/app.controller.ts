@@ -102,8 +102,8 @@ export class AppController {
   async voirDemande(@Param('id') id : string,@Request() req){
     const {_doc:agent} = req.user
     const demande = await this.demandeService.findOne(id);
-    const hasApplied = demande.agents_interesse?.filter(agn => agn.toString() == agent._id.toString()).length >= 0 ? true : false
   
+    const hasApplied = demande.agents_interesse.length > 0 ? true : false
     let currentAgent = {...agent,isNotMyPost:agent.demande != id && !hasApplied}
     return {demande : {...demande,currentAgent,hasApplied}}
   }
